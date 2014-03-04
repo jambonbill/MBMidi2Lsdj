@@ -1,0 +1,616 @@
+gpasm-0.14.3 #861 (Oct 28 2012) _output\pic18   11-16-2013  11:38:41        PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 ;; BEGIN inserted by fixasm.pl
+                      00002 ;; MPASM workarounds:
+  00000001            00003 BANKED  EQU 1
+                      00004 ;; END inserted by fixasm.pl
+                      00005 ;--------------------------------------------------------
+                      00006 ; File Created by SDCC : free open source ANSI-C Compiler
+                      00007 ; Version 2.8.0 #5117 (Mar 23 2008) (MINGW32)
+                      00008 ; This file was generated Sat Nov 16 11:38:41 2013
+                      00009 ;--------------------------------------------------------
+                      00010 ; PIC16 port for the Microchip 16-bit core micros
+                      00011 ;--------------------------------------------------------
+                      00012         list    p=18f452
+                      00013 
+                      00014         radix dec
+                      00015 
+                      00016 ;--------------------------------------------------------
+                      00017 ; public variables in this module
+                      00018 ;--------------------------------------------------------
+                      00019         global _PORTAbits
+                      00020         global _PORTBbits
+                      00021         global _PORTCbits
+                      00022         global _PORTDbits
+                      00023         global _PORTEbits
+                      00024         global _LATAbits
+                      00025         global _LATBbits
+                      00026         global _LATCbits
+                      00027         global _LATDbits
+                      00028         global _LATEbits
+                      00029         global _TRISAbits
+                      00030         global _TRISBbits
+                      00031         global _TRISCbits
+                      00032         global _TRISDbits
+                      00033         global _TRISEbits
+                      00034         global _PIE1bits
+                      00035         global _PIR1bits
+                      00036         global _IPR1bits
+                      00037         global _PIE2bits
+                      00038         global _PIR2bits
+                      00039         global _IPR2bits
+                      00040         global _EECON1bits
+                      00041         global _RCSTAbits
+                      00042         global _TXSTAbits
+                      00043         global _T3CONbits
+                      00044         global _CCP2CONbits
+                      00045         global _CCP1CONbits
+                      00046         global _ADCON1bits
+                      00047         global _ADCON0bits
+                      00048         global _SSPCON2bits
+                      00049         global _SSPCON1bits
+                      00050         global _SSPSTATbits
+                      00051         global _T2CONbits
+                      00052         global _T1CONbits
+                      00053         global _RCONbits
+gpasm-0.14.3 #861 (Oct 28 2012) _output\pic18   11-16-2013  11:38:41        PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00054         global _WDTCONbits
+                      00055         global _LVDCONbits
+                      00056         global _OSCCONbits
+                      00057         global _T0CONbits
+                      00058         global _STATUSbits
+                      00059         global _INTCON3bits
+                      00060         global _INTCON2bits
+                      00061         global _INTCONbits
+                      00062         global _STKPTRbits
+                      00063         global _PORTA
+                      00064         global _PORTB
+                      00065         global _PORTC
+                      00066         global _PORTD
+                      00067         global _PORTE
+                      00068         global _LATA
+                      00069         global _LATB
+                      00070         global _LATC
+                      00071         global _LATD
+                      00072         global _LATE
+                      00073         global _TRISA
+                      00074         global _TRISB
+                      00075         global _TRISC
+                      00076         global _TRISD
+                      00077         global _TRISE
+                      00078         global _PIE1
+                      00079         global _PIR1
+                      00080         global _IPR1
+                      00081         global _PIE2
+                      00082         global _PIR2
+                      00083         global _IPR2
+                      00084         global _EECON1
+                      00085         global _EECON2
+                      00086         global _EEDATA
+                      00087         global _EEADR
+                      00088         global _RCSTA
+                      00089         global _TXSTA
+                      00090         global _TXREG
+                      00091         global _RCREG
+                      00092         global _SPBRG
+                      00093         global _T3CON
+                      00094         global _TMR3L
+                      00095         global _TMR3H
+                      00096         global _CCP2CON
+                      00097         global _CCPR2L
+                      00098         global _CCPR2H
+                      00099         global _CCP1CON
+                      00100         global _CCPR1L
+                      00101         global _CCPR1H
+                      00102         global _ADCON1
+                      00103         global _ADCON0
+                      00104         global _ADRESL
+                      00105         global _ADRESH
+                      00106         global _SSPCON2
+gpasm-0.14.3 #861 (Oct 28 2012) _output\pic18   11-16-2013  11:38:41        PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00107         global _SSPCON1
+                      00108         global _SSPSTAT
+                      00109         global _SSPADD
+                      00110         global _SSPBUF
+                      00111         global _T2CON
+                      00112         global _PR2
+                      00113         global _TMR2
+                      00114         global _T1CON
+                      00115         global _TMR1L
+                      00116         global _TMR1H
+                      00117         global _RCON
+                      00118         global _WDTCON
+                      00119         global _LVDCON
+                      00120         global _OSCCON
+                      00121         global _T0CON
+                      00122         global _TMR0L
+                      00123         global _TMR0H
+                      00124         global _STATUS
+                      00125         global _FSR2L
+                      00126         global _FSR2H
+                      00127         global _PLUSW2
+                      00128         global _PREINC2
+                      00129         global _POSTDEC2
+                      00130         global _POSTINC2
+                      00131         global _INDF2
+                      00132         global _BSR
+                      00133         global _FSR1L
+                      00134         global _FSR1H
+                      00135         global _PLUSW1
+                      00136         global _PREINC1
+                      00137         global _POSTDEC1
+                      00138         global _POSTINC1
+                      00139         global _INDF1
+                      00140         global _WREG
+                      00141         global _FSR0L
+                      00142         global _FSR0H
+                      00143         global _PLUSW0
+                      00144         global _PREINC0
+                      00145         global _POSTDEC0
+                      00146         global _POSTINC0
+                      00147         global _INDF0
+                      00148         global _INTCON3
+                      00149         global _INTCON2
+                      00150         global _INTCON
+                      00151         global _PRODL
+                      00152         global _PRODH
+                      00153         global _TABLAT
+                      00154         global _TBLPTRL
+                      00155         global _TBLPTRH
+                      00156         global _TBLPTRU
+                      00157         global _PCL
+                      00158         global _PCLATH
+                      00159         global _PCLATU
+gpasm-0.14.3 #861 (Oct 28 2012) _output\pic18   11-16-2013  11:38:41        PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00160         global _STKPTR
+                      00161         global _TOSL
+                      00162         global _TOSH
+                      00163         global _TOSU
+                      00164 
+                      00165 
+                      00166 ustat_pic18f452_00      udata   0X0F80
+                      00167 
+000F80                00168 _PORTA  res     0
+000F80                00169 _PORTAbits      res     1
+                      00170 
+000F81                00171 _PORTB  res     0
+000F81                00172 _PORTBbits      res     1
+                      00173 
+000F82                00174 _PORTC  res     0
+000F82                00175 _PORTCbits      res     1
+                      00176 
+000F83                00177 _PORTD  res     0
+000F83                00178 _PORTDbits      res     1
+                      00179 
+000F84                00180 _PORTE  res     0
+000F84                00181 _PORTEbits      res     1
+                      00182 
+                      00183 
+                      00184 ustat_pic18f452_01      udata   0X0F89
+                      00185 
+000F89                00186 _LATA   res     0
+000F89                00187 _LATAbits       res     1
+                      00188 
+000F8A                00189 _LATB   res     0
+000F8A                00190 _LATBbits       res     1
+                      00191 
+000F8B                00192 _LATC   res     0
+000F8B                00193 _LATCbits       res     1
+                      00194 
+000F8C                00195 _LATD   res     0
+000F8C                00196 _LATDbits       res     1
+                      00197 
+000F8D                00198 _LATE   res     0
+000F8D                00199 _LATEbits       res     1
+                      00200 
+                      00201 
+                      00202 ustat_pic18f452_02      udata   0X0F92
+                      00203 
+000F92                00204 _TRISA  res     0
+000F92                00205 _TRISAbits      res     1
+                      00206 
+000F93                00207 _TRISB  res     0
+000F93                00208 _TRISBbits      res     1
+                      00209 
+000F94                00210 _TRISC  res     0
+000F94                00211 _TRISCbits      res     1
+                      00212 
+gpasm-0.14.3 #861 (Oct 28 2012) _output\pic18   11-16-2013  11:38:41        PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000F95                00213 _TRISD  res     0
+000F95                00214 _TRISDbits      res     1
+                      00215 
+000F96                00216 _TRISE  res     0
+000F96                00217 _TRISEbits      res     1
+                      00218 
+                      00219 
+                      00220 ustat_pic18f452_03      udata   0X0F9D
+                      00221 
+000F9D                00222 _PIE1   res     0
+000F9D                00223 _PIE1bits       res     1
+                      00224 
+000F9E                00225 _PIR1   res     0
+000F9E                00226 _PIR1bits       res     1
+                      00227 
+000F9F                00228 _IPR1   res     0
+000F9F                00229 _IPR1bits       res     1
+                      00230 
+000FA0                00231 _PIE2   res     0
+000FA0                00232 _PIE2bits       res     1
+                      00233 
+000FA1                00234 _PIR2   res     0
+000FA1                00235 _PIR2bits       res     1
+                      00236 
+000FA2                00237 _IPR2   res     0
+000FA2                00238 _IPR2bits       res     1
+                      00239 
+                      00240 
+                      00241 ustat_pic18f452_04      udata   0X0FA6
+                      00242 
+000FA6                00243 _EECON1 res     0
+000FA6                00244 _EECON1bits     res     1
+000FA7                00245 _EECON2 res     1
+000FA8                00246 _EEDATA res     1
+000FA9                00247 _EEADR  res     1
+                      00248 
+                      00249 
+                      00250 ustat_pic18f452_05      udata   0X0FAB
+                      00251 
+000FAB                00252 _RCSTA  res     0
+000FAB                00253 _RCSTAbits      res     1
+                      00254 
+000FAC                00255 _TXSTA  res     0
+000FAC                00256 _TXSTAbits      res     1
+000FAD                00257 _TXREG  res     1
+000FAE                00258 _RCREG  res     1
+000FAF                00259 _SPBRG  res     1
+                      00260 
+                      00261 
+                      00262 ustat_pic18f452_06      udata   0X0FB1
+                      00263 
+000FB1                00264 _T3CON  res     0
+000FB1                00265 _T3CONbits      res     1
+gpasm-0.14.3 #861 (Oct 28 2012) _output\pic18   11-16-2013  11:38:41        PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000FB2                00266 _TMR3L  res     1
+000FB3                00267 _TMR3H  res     1
+                      00268 
+                      00269 
+                      00270 ustat_pic18f452_07      udata   0X0FBA
+                      00271 
+000FBA                00272 _CCP2CON        res     0
+000FBA                00273 _CCP2CONbits    res     1
+000FBB                00274 _CCPR2L res     1
+000FBC                00275 _CCPR2H res     1
+                      00276 
+000FBD                00277 _CCP1CON        res     0
+000FBD                00278 _CCP1CONbits    res     1
+000FBE                00279 _CCPR1L res     1
+000FBF                00280 _CCPR1H res     1
+                      00281 
+                      00282 
+                      00283 ustat_pic18f452_08      udata   0X0FC1
+                      00284 
+000FC1                00285 _ADCON1 res     0
+000FC1                00286 _ADCON1bits     res     1
+                      00287 
+000FC2                00288 _ADCON0 res     0
+000FC2                00289 _ADCON0bits     res     1
+000FC3                00290 _ADRESL res     1
+000FC4                00291 _ADRESH res     1
+                      00292 
+000FC5                00293 _SSPCON2        res     0
+000FC5                00294 _SSPCON2bits    res     1
+                      00295 
+000FC6                00296 _SSPCON1        res     0
+000FC6                00297 _SSPCON1bits    res     1
+                      00298 
+000FC7                00299 _SSPSTAT        res     0
+000FC7                00300 _SSPSTATbits    res     1
+000FC8                00301 _SSPADD res     1
+000FC9                00302 _SSPBUF res     1
+                      00303 
+000FCA                00304 _T2CON  res     0
+000FCA                00305 _T2CONbits      res     1
+000FCB                00306 _PR2    res     1
+000FCC                00307 _TMR2   res     1
+                      00308 
+000FCD                00309 _T1CON  res     0
+000FCD                00310 _T1CONbits      res     1
+000FCE                00311 _TMR1L  res     1
+000FCF                00312 _TMR1H  res     1
+                      00313 
+000FD0                00314 _RCON   res     0
+000FD0                00315 _RCONbits       res     1
+                      00316 
+000FD1                00317 _WDTCON res     0
+000FD1                00318 _WDTCONbits     res     1
+gpasm-0.14.3 #861 (Oct 28 2012) _output\pic18   11-16-2013  11:38:41        PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00319 
+000FD2                00320 _LVDCON res     0
+000FD2                00321 _LVDCONbits     res     1
+                      00322 
+000FD3                00323 _OSCCON res     0
+000FD3                00324 _OSCCONbits     res     1
+                      00325 
+                      00326 
+                      00327 ustat_pic18f452_09      udata   0X0FD5
+                      00328 
+000FD5                00329 _T0CON  res     0
+000FD5                00330 _T0CONbits      res     1
+000FD6                00331 _TMR0L  res     1
+000FD7                00332 _TMR0H  res     1
+                      00333 
+000FD8                00334 _STATUS res     0
+000FD8                00335 _STATUSbits     res     1
+000FD9                00336 _FSR2L  res     1
+000FDA                00337 _FSR2H  res     1
+000FDB                00338 _PLUSW2 res     1
+000FDC                00339 _PREINC2        res     1
+000FDD                00340 _POSTDEC2       res     1
+000FDE                00341 _POSTINC2       res     1
+000FDF                00342 _INDF2  res     1
+000FE0                00343 _BSR    res     1
+000FE1                00344 _FSR0L  res     1
+000FE2                00345 _FSR0H  res     1
+000FE3                00346 _PLUSW0 res     1
+000FE4                00347 _PREINC0        res     1
+000FE5                00348 _POSTDEC0       res     1
+000FE6                00349 _POSTINC0       res     1
+000FE7                00350 _INDF0  res     1
+000FE8                00351 _WREG   res     1
+000FE9                00352 _FSR1L  res     1
+000FEA                00353 _FSR1H  res     1
+000FEB                00354 _PLUSW1 res     1
+000FEC                00355 _PREINC1        res     1
+000FED                00356 _POSTDEC1       res     1
+000FEE                00357 _POSTINC1       res     1
+000FEF                00358 _INDF1  res     1
+                      00359 
+000FF0                00360 _INTCON3        res     0
+000FF0                00361 _INTCON3bits    res     1
+                      00362 
+000FF1                00363 _INTCON2        res     0
+000FF1                00364 _INTCON2bits    res     1
+                      00365 
+000FF2                00366 _INTCON res     0
+000FF2                00367 _INTCONbits     res     1
+000FF3                00368 _PRODL  res     1
+000FF4                00369 _PRODH  res     1
+000FF5                00370 _TABLAT res     1
+000FF6                00371 _TBLPTRL        res     1
+gpasm-0.14.3 #861 (Oct 28 2012) _output\pic18   11-16-2013  11:38:41        PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000FF7                00372 _TBLPTRH        res     1
+000FF8                00373 _TBLPTRU        res     1
+000FF9                00374 _PCL    res     1
+000FFA                00375 _PCLATH res     1
+000FFB                00376 _PCLATU res     1
+                      00377 
+000FFC                00378 _STKPTR res     0
+000FFC                00379 _STKPTRbits     res     1
+000FFD                00380 _TOSL   res     1
+000FFE                00381 _TOSH   res     1
+000FFF                00382 _TOSU   res     1
+                      00383 
+                      00384 ;--------------------------------------------------------
+                      00385 ; global & static initialisations
+                      00386 ;--------------------------------------------------------
+                      00387 ; I code from now on!
+                      00388 
+                      00389 
+                      00390 ; Statistics:
+                      00391 ; code size:       -1 (0xffffffff) bytes (3276800.00%)
+                      00392 ;               2147483647 (0x7fffffff) words
+                      00393 ; udata size:     101 (0x0065) bytes ( 7.89%)
+                      00394 ; access size:      0 (0x0000) bytes
+                      00395 
+                      00396 
+                      00397         end
+gpasm-0.14.3 #861 (Oct 28 2012) _output\pic18   11-16-2013  11:38:41        PAGE  9
+
+
+SYMBOL TABLE
+  LABEL                             VALUE
+
+BANKED                            00000001
+_ADCON0                           00000FC2
+_ADCON0bits                       00000FC2
+_ADCON1                           00000FC1
+_ADCON1bits                       00000FC1
+_ADRESH                           00000FC4
+_ADRESL                           00000FC3
+_BSR                              00000FE0
+_CCP1CON                          00000FBD
+_CCP1CONbits                      00000FBD
+_CCP2CON                          00000FBA
+_CCP2CONbits                      00000FBA
+_CCPR1H                           00000FBF
+_CCPR1L                           00000FBE
+_CCPR2H                           00000FBC
+_CCPR2L                           00000FBB
+_EEADR                            00000FA9
+_EECON1                           00000FA6
+_EECON1bits                       00000FA6
+_EECON2                           00000FA7
+_EEDATA                           00000FA8
+_FSR0H                            00000FE2
+_FSR0L                            00000FE1
+_FSR1H                            00000FEA
+_FSR1L                            00000FE9
+_FSR2H                            00000FDA
+_FSR2L                            00000FD9
+_INDF0                            00000FE7
+_INDF1                            00000FEF
+_INDF2                            00000FDF
+_INTCON                           00000FF2
+_INTCON2                          00000FF1
+_INTCON2bits                      00000FF1
+_INTCON3                          00000FF0
+_INTCON3bits                      00000FF0
+_INTCONbits                       00000FF2
+_IPR1                             00000F9F
+_IPR1bits                         00000F9F
+_IPR2                             00000FA2
+_IPR2bits                         00000FA2
+_LATA                             00000F89
+_LATAbits                         00000F89
+_LATB                             00000F8A
+_LATBbits                         00000F8A
+_LATC                             00000F8B
+_LATCbits                         00000F8B
+_LATD                             00000F8C
+_LATDbits                         00000F8C
+_LATE                             00000F8D
+_LATEbits                         00000F8D
+_LVDCON                           00000FD2
+_LVDCONbits                       00000FD2
+_OSCCON                           00000FD3
+gpasm-0.14.3 #861 (Oct 28 2012) _output\pic18   11-16-2013  11:38:41        PAGE 10
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_OSCCONbits                       00000FD3
+_PCL                              00000FF9
+_PCLATH                           00000FFA
+_PCLATU                           00000FFB
+_PIE1                             00000F9D
+_PIE1bits                         00000F9D
+_PIE2                             00000FA0
+_PIE2bits                         00000FA0
+_PIR1                             00000F9E
+_PIR1bits                         00000F9E
+_PIR2                             00000FA1
+_PIR2bits                         00000FA1
+_PLUSW0                           00000FE3
+_PLUSW1                           00000FEB
+_PLUSW2                           00000FDB
+_PORTA                            00000F80
+_PORTAbits                        00000F80
+_PORTB                            00000F81
+_PORTBbits                        00000F81
+_PORTC                            00000F82
+_PORTCbits                        00000F82
+_PORTD                            00000F83
+_PORTDbits                        00000F83
+_PORTE                            00000F84
+_PORTEbits                        00000F84
+_POSTDEC0                         00000FE5
+_POSTDEC1                         00000FED
+_POSTDEC2                         00000FDD
+_POSTINC0                         00000FE6
+_POSTINC1                         00000FEE
+_POSTINC2                         00000FDE
+_PR2                              00000FCB
+_PREINC0                          00000FE4
+_PREINC1                          00000FEC
+_PREINC2                          00000FDC
+_PRODH                            00000FF4
+_PRODL                            00000FF3
+_RCON                             00000FD0
+_RCONbits                         00000FD0
+_RCREG                            00000FAE
+_RCSTA                            00000FAB
+_RCSTAbits                        00000FAB
+_SPBRG                            00000FAF
+_SSPADD                           00000FC8
+_SSPBUF                           00000FC9
+_SSPCON1                          00000FC6
+_SSPCON1bits                      00000FC6
+_SSPCON2                          00000FC5
+_SSPCON2bits                      00000FC5
+_SSPSTAT                          00000FC7
+_SSPSTATbits                      00000FC7
+_STATUS                           00000FD8
+_STATUSbits                       00000FD8
+gpasm-0.14.3 #861 (Oct 28 2012) _output\pic18   11-16-2013  11:38:41        PAGE 11
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_STKPTR                           00000FFC
+_STKPTRbits                       00000FFC
+_T0CON                            00000FD5
+_T0CONbits                        00000FD5
+_T1CON                            00000FCD
+_T1CONbits                        00000FCD
+_T2CON                            00000FCA
+_T2CONbits                        00000FCA
+_T3CON                            00000FB1
+_T3CONbits                        00000FB1
+_TABLAT                           00000FF5
+_TBLPTRH                          00000FF7
+_TBLPTRL                          00000FF6
+_TBLPTRU                          00000FF8
+_TMR0H                            00000FD7
+_TMR0L                            00000FD6
+_TMR1H                            00000FCF
+_TMR1L                            00000FCE
+_TMR2                             00000FCC
+_TMR3H                            00000FB3
+_TMR3L                            00000FB2
+_TOSH                             00000FFE
+_TOSL                             00000FFD
+_TOSU                             00000FFF
+_TRISA                            00000F92
+_TRISAbits                        00000F92
+_TRISB                            00000F93
+_TRISBbits                        00000F93
+_TRISC                            00000F94
+_TRISCbits                        00000F94
+_TRISD                            00000F95
+_TRISDbits                        00000F95
+_TRISE                            00000F96
+_TRISEbits                        00000F96
+_TXREG                            00000FAD
+_TXSTA                            00000FAC
+_TXSTAbits                        00000FAC
+_WDTCON                           00000FD1
+_WDTCONbits                       00000FD1
+_WREG                             00000FE8
+__18F452                          00000001
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+

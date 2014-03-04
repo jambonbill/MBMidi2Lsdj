@@ -1,0 +1,1237 @@
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               00001 ;; BEGIN inserted by fixasm.pl
+               00002 ;; MPASM workarounds:
+  00000001     00003 BANKED  EQU 1
+               00004 ;; END inserted by fixasm.pl
+               00005 ;--------------------------------------------------------
+               00006 ; File Created by SDCC : free open source ANSI-C Compiler
+               00007 ; Version 3.1.0 #7066 (Jun 14 2012) (Linux)
+               00008 ; This file was generated Mon Dec  2 22:51:28 2013
+               00009 ;--------------------------------------------------------
+               00010 ; PIC16 port for the Microchip 16-bit core micros
+               00011 ;--------------------------------------------------------
+               00012         list    p=18f452
+               00013 
+               00014         radix dec
+               00015 
+               00016 ;--------------------------------------------------------
+               00017 ; public variables in this module
+               00018 ;--------------------------------------------------------
+               00019         global _nbpulse
+               00020         global _nbpulse24
+               00021         global _nbtik
+               00022         global _nbstep
+               00023         global _nbpat
+               00024         global _timer
+               00025         global _timer24
+               00026         global _play
+               00027         global _midiplay
+               00028         global _last
+               00029         global _SEND_PULSE
+               00030         global _SYNC24_PUSH
+               00031         global _GB_INIT
+               00032         global _Init
+               00033         global _Tick
+               00034         global _Timer
+               00035         global _DISPLAY_Init
+               00036         global _DISPLAY_Tick
+               00037         global _MPROC_NotifyReceivedEvnt
+               00038         global _MPROC_NotifyFoundEvent
+               00039         global _MPROC_NotifyTimeout
+               00040         global _MPROC_NotifyReceivedByte
+               00041         global _SR_Service_Prepare
+               00042         global _SR_Service_Finish
+               00043         global _DIN_NotifyToggle
+               00044         global _ENC_NotifyChange
+               00045         global _AIN_NotifyChange
+               00046 
+               00047 ;--------------------------------------------------------
+               00048 ; extern variables in this module
+               00049 ;--------------------------------------------------------
+               00050         extern _MIOS_BOX_CFG0
+               00051         extern _MIOS_BOX_CFG1
+               00052         extern _MIOS_BOX_STAT
+               00053         extern _MIOS_PARAMETER1
+               00054         extern _MIOS_PARAMETER2
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               00055         extern _MIOS_PARAMETER3
+               00056         extern _PORTAbits
+               00057         extern _PORTBbits
+               00058         extern _PORTCbits
+               00059         extern _PORTDbits
+               00060         extern _PORTEbits
+               00061         extern _LATAbits
+               00062         extern _LATBbits
+               00063         extern _LATCbits
+               00064         extern _LATDbits
+               00065         extern _LATEbits
+               00066         extern _TRISAbits
+               00067         extern _TRISBbits
+               00068         extern _TRISCbits
+               00069         extern _TRISDbits
+               00070         extern _TRISEbits
+               00071         extern _PIE1bits
+               00072         extern _PIR1bits
+               00073         extern _IPR1bits
+               00074         extern _PIE2bits
+               00075         extern _PIR2bits
+               00076         extern _IPR2bits
+               00077         extern _EECON1bits
+               00078         extern _RCSTAbits
+               00079         extern _TXSTAbits
+               00080         extern _T3CONbits
+               00081         extern _CCP2CONbits
+               00082         extern _CCP1CONbits
+               00083         extern _ADCON1bits
+               00084         extern _ADCON0bits
+               00085         extern _SSPCON2bits
+               00086         extern _SSPCON1bits
+               00087         extern _SSPSTATbits
+               00088         extern _T2CONbits
+               00089         extern _T1CONbits
+               00090         extern _RCONbits
+               00091         extern _WDTCONbits
+               00092         extern _LVDCONbits
+               00093         extern _OSCCONbits
+               00094         extern _T0CONbits
+               00095         extern _STATUSbits
+               00096         extern _INTCON3bits
+               00097         extern _INTCON2bits
+               00098         extern _INTCONbits
+               00099         extern _STKPTRbits
+               00100         extern _PORTA
+               00101         extern _PORTB
+               00102         extern _PORTC
+               00103         extern _PORTD
+               00104         extern _PORTE
+               00105         extern _LATA
+               00106         extern _LATB
+               00107         extern _LATC
+               00108         extern _LATD
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               00109         extern _LATE
+               00110         extern _TRISA
+               00111         extern _TRISB
+               00112         extern _TRISC
+               00113         extern _TRISD
+               00114         extern _TRISE
+               00115         extern _PIE1
+               00116         extern _PIR1
+               00117         extern _IPR1
+               00118         extern _PIE2
+               00119         extern _PIR2
+               00120         extern _IPR2
+               00121         extern _EECON1
+               00122         extern _EECON2
+               00123         extern _EEDATA
+               00124         extern _EEADR
+               00125         extern _RCSTA
+               00126         extern _TXSTA
+               00127         extern _TXREG
+               00128         extern _RCREG
+               00129         extern _SPBRG
+               00130         extern _T3CON
+               00131         extern _TMR3L
+               00132         extern _TMR3H
+               00133         extern _CCP2CON
+               00134         extern _CCPR2L
+               00135         extern _CCPR2H
+               00136         extern _CCP1CON
+               00137         extern _CCPR1L
+               00138         extern _CCPR1H
+               00139         extern _ADCON1
+               00140         extern _ADCON0
+               00141         extern _ADRESL
+               00142         extern _ADRESH
+               00143         extern _SSPCON2
+               00144         extern _SSPCON1
+               00145         extern _SSPSTAT
+               00146         extern _SSPADD
+               00147         extern _SSPBUF
+               00148         extern _T2CON
+               00149         extern _PR2
+               00150         extern _TMR2
+               00151         extern _T1CON
+               00152         extern _TMR1L
+               00153         extern _TMR1H
+               00154         extern _RCON
+               00155         extern _WDTCON
+               00156         extern _LVDCON
+               00157         extern _OSCCON
+               00158         extern _T0CON
+               00159         extern _TMR0L
+               00160         extern _TMR0H
+               00161         extern _STATUS
+               00162         extern _FSR2L
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               00163         extern _FSR2H
+               00164         extern _PLUSW2
+               00165         extern _PREINC2
+               00166         extern _POSTDEC2
+               00167         extern _POSTINC2
+               00168         extern _INDF2
+               00169         extern _BSR
+               00170         extern _FSR1L
+               00171         extern _FSR1H
+               00172         extern _PLUSW1
+               00173         extern _PREINC1
+               00174         extern _POSTDEC1
+               00175         extern _POSTINC1
+               00176         extern _INDF1
+               00177         extern _WREG
+               00178         extern _FSR0L
+               00179         extern _FSR0H
+               00180         extern _PLUSW0
+               00181         extern _PREINC0
+               00182         extern _POSTDEC0
+               00183         extern _POSTINC0
+               00184         extern _INDF0
+               00185         extern _INTCON3
+               00186         extern _INTCON2
+               00187         extern _INTCON
+               00188         extern _PRODL
+               00189         extern _PRODH
+               00190         extern _TABLAT
+               00191         extern _TBLPTRL
+               00192         extern _TBLPTRH
+               00193         extern _TBLPTRU
+               00194         extern _PCL
+               00195         extern _PCLATH
+               00196         extern _PCLATU
+               00197         extern _STKPTR
+               00198         extern _TOSL
+               00199         extern _TOSH
+               00200         extern _TOSU
+               00201         extern _MIOS_MIDI_TxBufferPut
+               00202         extern _MIOS_LCD_Clear
+               00203         extern _MIOS_LCD_CursorSet
+               00204         extern _MIOS_LCD_PrintBCD1
+               00205         extern _MIOS_LCD_PrintBCD2
+               00206         extern _MIOS_LCD_PrintCString
+               00207         extern _MIOS_TIMER_Init
+               00208         extern _MIOS_MPROC_EVENT_TABLE
+               00209         extern _MIOS_ENC_PIN_TABLE
+               00210 ;--------------------------------------------------------
+               00211 ;       Equates to used internal registers
+               00212 ;--------------------------------------------------------
+  00000FD8     00213 STATUS  equ     0xfd8
+  00000FE9     00214 FSR1L   equ     0xfe9 ;; normaly 0xfe1, changed by fixasm.pl
+  00000FD9     00215 FSR2L   equ     0xfd9
+  00000FED     00216 POSTDEC1        equ     0xfed ;; normaly 0xfe5, changed by fixasm.pl
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+  00000FEC     00217 PREINC1 equ     0xfec ;; normaly 0xfe4, changed by fixasm.pl
+               00218 
+               00219 
+               00220         idata
+               00221 _timer  db      0x00, 0x00
+               00222 _timer24        db      0x00, 0x00
+               00223 _play   db      0x00
+               00224 _midiplay       db      0x00
+               00225 _last   db      0x00
+               00226 
+               00227 
+               00228 ; Internal registers
+               00229 .registers      udata_ovr       0x010
+               00230 r0x00   res     1
+               00231 
+               00232 udata_main_0    udata
+               00233 _nbpulse        res     1
+               00234 
+               00235 udata_main_1    udata
+               00236 _nbpulse24      res     1
+               00237 
+               00238 udata_main_2    udata
+               00239 _nbtik  res     1
+               00240 
+               00241 udata_main_3    udata
+               00242 _nbstep res     1
+               00243 
+               00244 udata_main_4    udata
+               00245 _nbpat  res     1
+               00246 
+               00247 ;--------------------------------------------------------
+               00248 ; global & static initialisations
+               00249 ;--------------------------------------------------------
+               00250 ; I code from now on!
+               00251 ; ; Starting pCode block
+               00252 S_main__AIN_NotifyChange        code
+0000 00253 _AIN_NotifyChange:
+               00254 ;       .line   240; main.c     void AIN_NotifyChange(unsigned char pin, unsigned int pin_value) __wparam
+0000 CFD9 FFED 00255         MOVFF   FSR2L, POSTDEC1
+0004 CFE9 FFD9 00256         MOVFF   FSR1L, FSR2L
+               00257 ;       .line   242; main.c     }
+0008 CFEC FFD9 00258         MOVFF   PREINC1, FSR2L
+000C 0012      00259         RETURN  
+               00260 
+               00261 ; ; Starting pCode block
+               00262 S_main__ENC_NotifyChange        code
+0000 00263 _ENC_NotifyChange:
+               00264 ;       .line   233; main.c     void ENC_NotifyChange(unsigned char encoder, char incrementer) __wparam
+0000 CFD9 FFED 00265         MOVFF   FSR2L, POSTDEC1
+0004 CFE9 FFD9 00266         MOVFF   FSR1L, FSR2L
+               00267 ;       .line   235; main.c     }
+0008 CFEC FFD9 00268         MOVFF   PREINC1, FSR2L
+000C 0012      00269         RETURN  
+               00270 
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               00271 ; ; Starting pCode block
+               00272 S_main__DIN_NotifyToggle        code
+0000 00273 _DIN_NotifyToggle:
+               00274 ;       .line   224; main.c     void DIN_NotifyToggle(unsigned char pin, unsigned char pin_value) __wparam
+0000 CFD9 FFED 00275         MOVFF   FSR2L, POSTDEC1
+0004 CFE9 FFD9 00276         MOVFF   FSR1L, FSR2L
+               00277 ;       .line   226; main.c     }
+0008 CFEC FFD9 00278         MOVFF   PREINC1, FSR2L
+000C 0012      00279         RETURN  
+               00280 
+               00281 ; ; Starting pCode block
+               00282 S_main__SR_Service_Finish       code
+0000 00283 _SR_Service_Finish:
+               00284 ;       .line   214; main.c     void SR_Service_Finish(void) __wparam
+0000 CFD9 FFED 00285         MOVFF   FSR2L, POSTDEC1
+0004 CFE9 FFD9 00286         MOVFF   FSR1L, FSR2L
+               00287 ;       .line   216; main.c     }
+0008 CFEC FFD9 00288         MOVFF   PREINC1, FSR2L
+000C 0012      00289         RETURN  
+               00290 
+               00291 ; ; Starting pCode block
+               00292 S_main__SR_Service_Prepare      code
+0000 00293 _SR_Service_Prepare:
+               00294 ;       .line   207; main.c     void SR_Service_Prepare(void) __wparam
+0000 CFD9 FFED 00295         MOVFF   FSR2L, POSTDEC1
+0004 CFE9 FFD9 00296         MOVFF   FSR1L, FSR2L
+               00297 ;       .line   209; main.c     }
+0008 CFEC FFD9 00298         MOVFF   PREINC1, FSR2L
+000C 0012      00299         RETURN  
+               00300 
+               00301 ; ; Starting pCode block
+               00302 S_main__MPROC_NotifyReceivedByte        code
+0000 00303 _MPROC_NotifyReceivedByte:
+               00304 ;       .line   176; main.c     void MPROC_NotifyReceivedByte(unsigned char byte) __wparam
+0000 CFD9 FFED 00305         MOVFF   FSR2L, POSTDEC1
+0004 CFE9 FFD9 00306         MOVFF   FSR1L, FSR2L
+0008 C000 FFED 00307         MOVFF   r0x00, POSTDEC1
+000C 6E00      00308         MOVWF   r0x00
+               00309 ;       .line   180; main.c     switch(byte){
+000E 5000      00310         MOVF    r0x00, W
+0010 0AF8      00311         XORLW   0xf8
+0012 E000      00312         BZ      _00227_DS_
+0014 5000      00313         MOVF    r0x00, W
+0016 0AFA      00314         XORLW   0xfa
+0018 E000      00315         BZ      _00225_DS_
+001A 5000      00316         MOVF    r0x00, W
+001C 0AFB      00317         XORLW   0xfb
+001E E000      00318         BZ      _00225_DS_
+0020 5000      00319         MOVF    r0x00, W
+0022 0AFC      00320         XORLW   0xfc
+0024 E000      00321         BZ      _00226_DS_
+0026 D000      00322         BRA     _00231_DS_
+0028 00323 _00225_DS_:
+               00324 ;       .line   186; main.c     midiplay=1;
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0028 0E01      00325         MOVLW   0x01
+002A 0000      00326         BANKSEL _midiplay
+002C 6F00      00327         MOVWF   _midiplay, B
+               00328 ;       .line   187; main.c     break;
+002E D000      00329         BRA     _00231_DS_
+0030 00330 _00226_DS_:
+               00331 ;       .line   190; main.c     MIOS_LCD_CursorSet(0x00);
+0030 0E00      00332         MOVLW   0x00
+0032 EC00 F000 00333         CALL    _MIOS_LCD_CursorSet
+               00334 ;       .line   191; main.c     MIOS_LCD_PrintCString("STOP      ");
+0036 0E00      00335         MOVLW   UPPER(__str_5)
+0038 6EED      00336         MOVWF   POSTDEC1
+003A 0E00      00337         MOVLW   HIGH(__str_5)
+003C 6EED      00338         MOVWF   POSTDEC1
+003E 0E00      00339         MOVLW   LOW(__str_5)
+0040 EC00 F000 00340         CALL    _MIOS_LCD_PrintCString
+0044 0E02      00341         MOVLW   0x02
+0046 26E9      00342         ADDWF   FSR1L, F
+0048 0000      00343         BANKSEL _midiplay
+               00344 ;       .line   192; main.c     midiplay=0;
+004A 6B00      00345         CLRF    _midiplay, B
+               00346 ;       .line   193; main.c     GB_INIT();
+004C EC00 F000 00347         CALL    _GB_INIT
+               00348 ;       .line   194; main.c     break;
+0050 D000      00349         BRA     _00231_DS_
+0052 00350 _00227_DS_:
+0052 0000      00351         BANKSEL _midiplay
+               00352 ;       .line   197; main.c     if(midiplay==1){
+0054 5100      00353         MOVF    _midiplay, W, B
+0056 0A01      00354         XORLW   0x01
+0058 E100      00355         BNZ     _00231_DS_
+               00356 ;       .line   198; main.c     SYNC24_PUSH();
+005A EC00 F000 00357         CALL    _SYNC24_PUSH
+005E 00358 _00231_DS_:
+               00359 ;       .line   201; main.c     }
+005E CFEC F000 00360         MOVFF   PREINC1, r0x00
+0062 CFEC FFD9 00361         MOVFF   PREINC1, FSR2L
+0066 0012      00362         RETURN  
+               00363 
+               00364 ; ; Starting pCode block
+               00365 S_main__MPROC_NotifyTimeout     code
+0000 00366 _MPROC_NotifyTimeout:
+               00367 ;       .line   169; main.c     void MPROC_NotifyTimeout(void) __wparam
+0000 CFD9 FFED 00368         MOVFF   FSR2L, POSTDEC1
+0004 CFE9 FFD9 00369         MOVFF   FSR1L, FSR2L
+               00370 ;       .line   171; main.c     }
+0008 CFEC FFD9 00371         MOVFF   PREINC1, FSR2L
+000C 0012      00372         RETURN  
+               00373 
+               00374 ; ; Starting pCode block
+               00375 S_main__MPROC_NotifyFoundEvent  code
+0000 00376 _MPROC_NotifyFoundEvent:
+               00377 ;       .line   161; main.c     void MPROC_NotifyFoundEvent(unsigned entry, unsigned char evnt0, unsigned char evnt1, unsigned char evnt2) __wparam
+0000 CFD9 FFED 00378         MOVFF   FSR2L, POSTDEC1
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0004 CFE9 FFD9 00379         MOVFF   FSR1L, FSR2L
+               00380 ;       .line   163; main.c     }
+0008 CFEC FFD9 00381         MOVFF   PREINC1, FSR2L
+000C 0012      00382         RETURN  
+               00383 
+               00384 ; ; Starting pCode block
+               00385 S_main__MPROC_NotifyReceivedEvnt        code
+0000 00386 _MPROC_NotifyReceivedEvnt:
+               00387 ;       .line   153; main.c     void MPROC_NotifyReceivedEvnt(unsigned char evnt0, unsigned char evnt1, unsigned char evnt2) __wparam
+0000 CFD9 FFED 00388         MOVFF   FSR2L, POSTDEC1
+0004 CFE9 FFD9 00389         MOVFF   FSR1L, FSR2L
+               00390 ;       .line   155; main.c     }
+0008 CFEC FFD9 00391         MOVFF   PREINC1, FSR2L
+000C 0012      00392         RETURN  
+               00393 
+               00394 ; ; Starting pCode block
+               00395 S_main__DISPLAY_Tick    code
+0000 00396 _DISPLAY_Tick:
+               00397 ;       .line   146; main.c     void DISPLAY_Tick(void) __wparam
+0000 CFD9 FFED 00398         MOVFF   FSR2L, POSTDEC1
+0004 CFE9 FFD9 00399         MOVFF   FSR1L, FSR2L
+               00400 ;       .line   148; main.c     }
+0008 CFEC FFD9 00401         MOVFF   PREINC1, FSR2L
+000C 0012      00402         RETURN  
+               00403 
+               00404 ; ; Starting pCode block
+               00405 S_main__DISPLAY_Init    code
+0000 00406 _DISPLAY_Init:
+               00407 ;       .line   135; main.c     void DISPLAY_Init(void) __wparam
+0000 CFD9 FFED 00408         MOVFF   FSR2L, POSTDEC1
+0004 CFE9 FFD9 00409         MOVFF   FSR1L, FSR2L
+               00410 ;       .line   137; main.c     MIOS_LCD_Clear();
+0008 EC00 F000 00411         CALL    _MIOS_LCD_Clear
+               00412 ;       .line   138; main.c     MIOS_LCD_CursorSet(0x00);
+000C 0E00      00413         MOVLW   0x00
+000E EC00 F000 00414         CALL    _MIOS_LCD_CursorSet
+               00415 ;       .line   139; main.c     MIOS_LCD_PrintCString("Lsdj Slave Sync  ");
+0012 0E00      00416         MOVLW   UPPER(__str_4)
+0014 6EED      00417         MOVWF   POSTDEC1
+0016 0E00      00418         MOVLW   HIGH(__str_4)
+0018 6EED      00419         MOVWF   POSTDEC1
+001A 0E00      00420         MOVLW   LOW(__str_4)
+001C EC00 F000 00421         CALL    _MIOS_LCD_PrintCString
+0020 0E02      00422         MOVLW   0x02
+0022 26E9      00423         ADDWF   FSR1L, F
+0024 CFEC FFD9 00424         MOVFF   PREINC1, FSR2L
+0028 0012      00425         RETURN  
+               00426 
+               00427 ; ; Starting pCode block
+               00428 S_main__Timer   code
+0000 00429 _Timer:
+               00430 ;       .line   99; main.c      void Timer(void) __wparam
+0000 CFD9 FFED 00431         MOVFF   FSR2L, POSTDEC1
+0004 CFE9 FFD9 00432         MOVFF   FSR1L, FSR2L
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0008 C000 FFED 00433         MOVFF   r0x00, POSTDEC1
+               00434 ;       .line   103; main.c     char st=PORTCbits.RC2;
+000C 6A00      00435         CLRF    r0x00
+000E B400      00436         BTFSC   _PORTCbits, 2
+0010 2A00      00437         INCF    r0x00, F
+               00438 ;       .line   105; main.c     if(st!=last){
+0012 5000      00439         MOVF    r0x00, W
+0014 0000      00440         BANKSEL _last
+0016 1900      00441         XORWF   _last, W, B
+0018 E000      00442         BZ      _00173_DS_
+               00443 ;       .line   106; main.c     if(st==1)SYNC24_PUSH();
+001A 5000      00444         MOVF    r0x00, W
+001C 0A01      00445         XORLW   0x01
+001E E100      00446         BNZ     _00173_DS_
+0020 EC00 F000 00447         CALL    _SYNC24_PUSH
+0024 00448 _00173_DS_:
+               00449 ;       .line   109; main.c     last=st;
+0024 C000 F000 00450         MOVFF   r0x00, _last
+0028 0000      00451         BANKSEL _play
+               00452 ;       .line   111; main.c     if(play == 0)return;// STOP
+002A 5100      00453         MOVF    _play, W, B
+002C E000      00454         BZ      _00182_DS_
+               00455 ;       .line   113; main.c     if(timer24>1){//SEND SYNC24 PULSE OUT
+002E 0E00      00456         MOVLW   0x00
+0030 0000      00457         BANKSEL (_timer24 + 1)
+0032 5D00      00458         SUBWF   (_timer24 + 1), W, B
+0034 E100      00459         BNZ     _00193_DS_
+0036 0E02      00460         MOVLW   0x02
+               00461 ; removed redundant BANKSEL
+0038 5D00      00462         SUBWF   _timer24, W, B
+003A 00463 _00193_DS_:
+003A E300      00464         BNC     _00177_DS_
+               00465 ;       .line   114; main.c     timer24--;
+003C 0EFF      00466         MOVLW   0xff
+003E 0000      00467         BANKSEL _timer24
+0040 2700      00468         ADDWF   _timer24, F, B
+0042 E200      00469         BC      _10272_DS_
+               00470 ; removed redundant BANKSEL
+0044 0700      00471         DECF    (_timer24 + 1), F, B
+0046 00472 _10272_DS_:
+               00473 ;       .line   115; main.c     PORTAbits.RA3 = 1;
+0046 8600      00474         BSF     _PORTAbits, 3
+0048 D000      00475         BRA     _00178_DS_
+004A 00476 _00177_DS_:
+               00477 ;       .line   117; main.c     PORTAbits.RA3 = 0;
+004A 9600      00478         BCF     _PORTAbits, 3
+004C 00479 _00178_DS_:
+               00480 ;       .line   121; main.c     if(timer>1){
+004C 0E00      00481         MOVLW   0x00
+004E 0000      00482         BANKSEL (_timer + 1)
+0050 5D00      00483         SUBWF   (_timer + 1), W, B
+0052 E100      00484         BNZ     _00194_DS_
+0054 0E02      00485         MOVLW   0x02
+               00486 ; removed redundant BANKSEL
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0056 5D00      00487         SUBWF   _timer, W, B
+0058 00488 _00194_DS_:
+0058 E300      00489         BNC     _00180_DS_
+               00490 ;       .line   122; main.c     timer--;
+005A 0EFF      00491         MOVLW   0xff
+005C 0000      00492         BANKSEL _timer
+005E 2700      00493         ADDWF   _timer, F, B
+0060 E200      00494         BC      _20273_DS_
+               00495 ; removed redundant BANKSEL
+0062 0700      00496         DECF    (_timer + 1), F, B
+0064 00497 _20273_DS_:
+0064 D000      00498         BRA     _00182_DS_
+0066 00499 _00180_DS_:
+0066 0000      00500         BANKSEL _play
+               00501 ;       .line   124; main.c     play=0;
+0068 6B00      00502         CLRF    _play, B
+               00503 ;       .line   125; main.c     MIOS_MIDI_TxBufferPut(0xFC); // MIDI STOP
+006A 0EFC      00504         MOVLW   0xfc
+006C EC00 F000 00505         CALL    _MIOS_MIDI_TxBufferPut
+               00506 ;       .line   126; main.c     GB_INIT();
+0070 EC00 F000 00507         CALL    _GB_INIT
+0074 00508 _00182_DS_:
+0074 CFEC F000 00509         MOVFF   PREINC1, r0x00
+0078 CFEC FFD9 00510         MOVFF   PREINC1, FSR2L
+007C 0012      00511         RETURN  
+               00512 
+               00513 ; ; Starting pCode block
+               00514 S_main__Tick    code
+0000 00515 _Tick:
+               00516 ;       .line   89; main.c      void Tick(void) __wparam
+0000 CFD9 FFED 00517         MOVFF   FSR2L, POSTDEC1
+0004 CFE9 FFD9 00518         MOVFF   FSR1L, FSR2L
+               00519 ;       .line   91; main.c      }
+0008 CFEC FFD9 00520         MOVFF   PREINC1, FSR2L
+000C 0012      00521         RETURN  
+               00522 
+               00523 ; ; Starting pCode block
+               00524 S_main__Init    code
+0000 00525 _Init:
+               00526 ;       .line   62; main.c      void Init(void) __wparam
+0000 CFD9 FFED 00527         MOVFF   FSR2L, POSTDEC1
+0004 CFE9 FFD9 00528         MOVFF   FSR1L, FSR2L
+               00529 ;       .line   67; main.c      MIOS_TIMER_Init(0, 10000); // 1 mS / 100 nS = 10000 cycles      
+0008 0E27      00530         MOVLW   0x27
+000A 6EED      00531         MOVWF   POSTDEC1
+000C 0E10      00532         MOVLW   0x10
+000E 6EED      00533         MOVWF   POSTDEC1
+0010 0E00      00534         MOVLW   0x00
+0012 EC00 F000 00535         CALL    _MIOS_TIMER_Init
+0016 0E02      00536         MOVLW   0x02
+0018 26E9      00537         ADDWF   FSR1L, F
+               00538 ;       .line   70; main.c      ADCON1 = 0x07;
+001A 0E07      00539         MOVLW   0x07
+001C 6E00      00540         MOVWF   _ADCON1
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE 11
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               00541 ;       .line   71; main.c      TRISA &= 0xd0;
+001E 0ED0      00542         MOVLW   0xd0
+0020 1600      00543         ANDWF   _TRISA, F
+               00544 ;       .line   72; main.c      TRISE &= 0xf8;
+0022 0EF8      00545         MOVLW   0xf8
+0024 1600      00546         ANDWF   _TRISE, F
+               00547 ;       .line   75; main.c      PORTAbits.RA0 = 0;//led 1
+0026 9000      00548         BCF     _PORTAbits, 0
+               00549 ;       .line   76; main.c      PORTAbits.RA1 = 1;//led2
+0028 8200      00550         BSF     _PORTAbits, 1
+               00551 ;       .line   77; main.c      PORTAbits.RA2 = 0;//sync24 runstop
+002A 9400      00552         BCF     _PORTAbits, 2
+               00553 ;       .line   78; main.c      PORTAbits.RA3 = 0;//sync24 clock
+002C 9600      00554         BCF     _PORTAbits, 3
+               00555 ;       .line   79; main.c      PORTAbits.RA5 = 0;//free -> no typo! RA4 is allocated by IIC
+002E 9A00      00556         BCF     _PORTAbits, 5
+               00557 ;       .line   80; main.c      PORTEbits.RE0 = 0;//free
+0030 9000      00558         BCF     _PORTEbits, 0
+               00559 ;       .line   81; main.c      PORTEbits.RE1 = 0;//free
+0032 9200      00560         BCF     _PORTEbits, 1
+               00561 ;       .line   82; main.c      PORTEbits.RE2 = 0;//free        
+0034 9400      00562         BCF     _PORTEbits, 2
+0036 CFEC FFD9 00563         MOVFF   PREINC1, FSR2L
+003A 0012      00564         RETURN  
+               00565 
+               00566 ; ; Starting pCode block
+               00567 S_main__GB_INIT code
+0000 00568 _GB_INIT:
+               00569 ;       .line   36; main.c      void GB_INIT(void){// RESET
+0000 CFD9 FFED 00570         MOVFF   FSR2L, POSTDEC1
+0004 CFE9 FFD9 00571         MOVFF   FSR1L, FSR2L
+               00572 ;       .line   38; main.c      MIOS_LCD_CursorSet(0x00);
+0008 0E00      00573         MOVLW   0x00
+000A EC00 F000 00574         CALL    _MIOS_LCD_CursorSet
+               00575 ;       .line   39; main.c      MIOS_LCD_PrintCString("STOP NOW");
+000E 0E00      00576         MOVLW   UPPER(__str_3)
+0010 6EED      00577         MOVWF   POSTDEC1
+0012 0E00      00578         MOVLW   HIGH(__str_3)
+0014 6EED      00579         MOVWF   POSTDEC1
+0016 0E00      00580         MOVLW   LOW(__str_3)
+0018 EC00 F000 00581         CALL    _MIOS_LCD_PrintCString
+001C 0E02      00582         MOVLW   0x02
+001E 26E9      00583         ADDWF   FSR1L, F
+0020 0000      00584         BANKSEL _nbpulse
+               00585 ;       .line   40; main.c      nbpulse=0; 
+0022 6B00      00586         CLRF    _nbpulse, B
+0024 0000      00587         BANKSEL _nbtik
+               00588 ;       .line   41; main.c      nbtik=0;
+0026 6B00      00589         CLRF    _nbtik, B
+0028 0000      00590         BANKSEL _nbstep
+               00591 ;       .line   42; main.c      nbstep=0;
+002A 6B00      00592         CLRF    _nbstep, B
+002C 0000      00593         BANKSEL _nbpat
+               00594 ;       .line   43; main.c      nbpat=0;
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE 12
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+002E 6B00      00595         CLRF    _nbpat, B
+               00596 ;       .line   51; main.c      PORTAbits.RA0 = 0;//led 1
+0030 9000      00597         BCF     _PORTAbits, 0
+               00598 ;       .line   52; main.c      PORTAbits.RA1 = 1;//led 2
+0032 8200      00599         BSF     _PORTAbits, 1
+               00600 ;       .line   53; main.c      PORTAbits.RA2 = 0;//
+0034 9400      00601         BCF     _PORTAbits, 2
+               00602 ;       .line   54; main.c      PORTAbits.RA3 = 0;//
+0036 9600      00603         BCF     _PORTAbits, 3
+               00604 ;       .line   55; main.c      return;
+0038 CFEC FFD9 00605         MOVFF   PREINC1, FSR2L
+003C 0012      00606         RETURN  
+               00607 
+               00608 ; ; Starting pCode block
+               00609 S_main__SYNC24_PUSH     code
+0000 00610 _SYNC24_PUSH:
+               00611 ;       .line   42; sync24.c    void SYNC24_PUSH(void){
+0000 CFD9 FFED 00612         MOVFF   FSR2L, POSTDEC1
+0004 CFE9 FFD9 00613         MOVFF   FSR1L, FSR2L
+0008 C000 FFED 00614         MOVFF   r0x00, POSTDEC1
+000C 0000      00615         BANKSEL _nbpulse
+               00616 ;       .line   44; sync24.c    nbpulse++;
+000E 2B00      00617         INCF    _nbpulse, F, B
+0010 0000      00618         BANKSEL _nbpulse24
+               00619 ;       .line   45; sync24.c    nbpulse24++;
+0012 2B00      00620         INCF    _nbpulse24, F, B
+               00621 ;       .line   49; sync24.c    if( (play == 1 && nbpulse24>=1) || (midiplay == 1 && nbpulse24>=1) ){
+0014 6A00      00622         CLRF    r0x00
+0016 0000      00623         BANKSEL _play
+0018 5100      00624         MOVF    _play, W, B
+001A 0A01      00625         XORLW   0x01
+001C E100      00626         BNZ     _00139_DS_
+001E 2A00      00627         INCF    r0x00, F
+0020 00628 _00139_DS_:
+0020 5000      00629         MOVF    r0x00, W
+0022 E000      00630         BZ      _00114_DS_
+0024 0E01      00631         MOVLW   0x01
+0026 0000      00632         BANKSEL _nbpulse24
+0028 5D00      00633         SUBWF   _nbpulse24, W, B
+002A E200      00634         BC      _00110_DS_
+002C 00635 _00114_DS_:
+002C 0000      00636         BANKSEL _midiplay
+002E 5100      00637         MOVF    _midiplay, W, B
+0030 0A01      00638         XORLW   0x01
+0032 E100      00639         BNZ     _00111_DS_
+0034 0E01      00640         MOVLW   0x01
+0036 0000      00641         BANKSEL _nbpulse24
+0038 5D00      00642         SUBWF   _nbpulse24, W, B
+003A E300      00643         BNC     _00111_DS_
+003C 00644 _00110_DS_:
+003C 0000      00645         BANKSEL _nbpulse24
+               00646 ;       .line   50; sync24.c    nbpulse24=0;
+003E 6B00      00647         CLRF    _nbpulse24, B
+               00648 ;       .line   51; sync24.c    timer24=4;//SYNC 24 Pulse length (ms) :)
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE 13
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0040 0E04      00649         MOVLW   0x04
+0042 0000      00650         BANKSEL _timer24
+0044 6F00      00651         MOVWF   _timer24, B
+               00652 ; removed redundant BANKSEL
+0046 6B00      00653         CLRF    (_timer24 + 1), B
+               00654 ;       .line   54; sync24.c    PORTAbits.RA3 = 1;
+0048 8600      00655         BSF     _PORTAbits, 3
+004A 00656 _00111_DS_:
+               00657 ;       .line   58; sync24.c    if( (play == 1 && nbpulse>=3) || (midiplay == 1 && nbpulse>=3) ){       
+004A 5000      00658         MOVF    r0x00, W
+004C E000      00659         BZ      _00125_DS_
+004E 0E03      00660         MOVLW   0x03
+0050 0000      00661         BANKSEL _nbpulse
+0052 5D00      00662         SUBWF   _nbpulse, W, B
+0054 E200      00663         BC      _00121_DS_
+0056 00664 _00125_DS_:
+0056 0000      00665         BANKSEL _midiplay
+0058 5100      00666         MOVF    _midiplay, W, B
+005A 0A01      00667         XORLW   0x01
+005C E000      00668         BZ      _00146_DS_
+005E D000      00669         BRA     _00122_DS_
+0060 00670 _00146_DS_:
+0060 0E03      00671         MOVLW   0x03
+0062 0000      00672         BANKSEL _nbpulse
+0064 5D00      00673         SUBWF   _nbpulse, W, B
+0066 A0D8      00674         BTFSS   STATUS, 0
+0068 D000      00675         BRA     _00122_DS_
+006A 00676 _00121_DS_:
+006A 0000      00677         BANKSEL _nbpulse
+               00678 ;       .line   60; sync24.c    nbpulse=0;
+006C 6B00      00679         CLRF    _nbpulse, B
+006E 0000      00680         BANKSEL _nbtik
+               00681 ;       .line   61; sync24.c    nbtik++;
+0070 2B00      00682         INCF    _nbtik, F, B
+               00683 ;       .line   63; sync24.c    if(nbtik>=8){
+0072 0E08      00684         MOVLW   0x08
+               00685 ; removed redundant BANKSEL
+0074 5D00      00686         SUBWF   _nbtik, W, B
+0076 E300      00687         BNC     _00116_DS_
+               00688 ; removed redundant BANKSEL
+               00689 ;       .line   64; sync24.c    nbtik=0;
+0078 6B00      00690         CLRF    _nbtik, B
+007A 0000      00691         BANKSEL _nbstep
+               00692 ;       .line   65; sync24.c    nbstep++;
+007C 2B00      00693         INCF    _nbstep, F, B
+               00694 ;       .line   66; sync24.c    PORTAbits.RA1 = 1;//LEDS
+007E 8200      00695         BSF     _PORTAbits, 1
+0080 00696 _00116_DS_:
+               00697 ;       .line   69; sync24.c    if(nbstep>=4){
+0080 0E04      00698         MOVLW   0x04
+0082 0000      00699         BANKSEL _nbstep
+0084 5D00      00700         SUBWF   _nbstep, W, B
+0086 E300      00701         BNC     _00118_DS_
+               00702 ; removed redundant BANKSEL
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE 14
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               00703 ;       .line   70; sync24.c    nbstep=0;
+0088 6B00      00704         CLRF    _nbstep, B
+008A 0000      00705         BANKSEL _nbpat
+               00706 ;       .line   71; sync24.c    nbpat++;
+008C 2B00      00707         INCF    _nbpat, F, B
+               00708 ;       .line   72; sync24.c    PORTAbits.RA0 = 1;//LEDS
+008E 8000      00709         BSF     _PORTAbits, 0
+0090 00710 _00118_DS_:
+               00711 ;       .line   75; sync24.c    if(nbtik>1){
+0090 0E02      00712         MOVLW   0x02
+0092 0000      00713         BANKSEL _nbtik
+0094 5D00      00714         SUBWF   _nbtik, W, B
+0096 E300      00715         BNC     _00120_DS_
+               00716 ;       .line   76; sync24.c    PORTAbits.RA0 = 0;//LEDS
+0098 9000      00717         BCF     _PORTAbits, 0
+               00718 ;       .line   77; sync24.c    PORTAbits.RA1 = 0;//LEDS
+009A 9200      00719         BCF     _PORTAbits, 1
+009C 00720 _00120_DS_:
+               00721 ;       .line   81; sync24.c    MIOS_LCD_CursorSet(0x00);
+009C 0E00      00722         MOVLW   0x00
+009E EC00 F000 00723         CALL    _MIOS_LCD_CursorSet
+               00724 ;       .line   82; sync24.c    MIOS_LCD_PrintCString("[");
+00A2 0E00      00725         MOVLW   UPPER(__str_0)
+00A4 6EED      00726         MOVWF   POSTDEC1
+00A6 0E00      00727         MOVLW   HIGH(__str_0)
+00A8 6EED      00728         MOVWF   POSTDEC1
+00AA 0E00      00729         MOVLW   LOW(__str_0)
+00AC EC00 F000 00730         CALL    _MIOS_LCD_PrintCString
+00B0 0E02      00731         MOVLW   0x02
+00B2 26E9      00732         ADDWF   FSR1L, F
+00B4 0000      00733         BANKSEL _nbtik
+               00734 ;       .line   83; sync24.c    MIOS_LCD_PrintBCD1(nbtik+1);//
+00B6 2900      00735         INCF    _nbtik, W, B
+00B8 6E00      00736         MOVWF   r0x00
+00BA 5000      00737         MOVF    r0x00, W
+00BC EC00 F000 00738         CALL    _MIOS_LCD_PrintBCD1
+               00739 ;       .line   84; sync24.c    MIOS_LCD_PrintCString("][");
+00C0 0E00      00740         MOVLW   UPPER(__str_1)
+00C2 6EED      00741         MOVWF   POSTDEC1
+00C4 0E00      00742         MOVLW   HIGH(__str_1)
+00C6 6EED      00743         MOVWF   POSTDEC1
+00C8 0E00      00744         MOVLW   LOW(__str_1)
+00CA EC00 F000 00745         CALL    _MIOS_LCD_PrintCString
+00CE 0E02      00746         MOVLW   0x02
+00D0 26E9      00747         ADDWF   FSR1L, F
+00D2 0000      00748         BANKSEL _nbstep
+               00749 ;       .line   85; sync24.c    MIOS_LCD_PrintBCD1(nbstep+1);//
+00D4 2900      00750         INCF    _nbstep, W, B
+00D6 6E00      00751         MOVWF   r0x00
+00D8 5000      00752         MOVF    r0x00, W
+00DA EC00 F000 00753         CALL    _MIOS_LCD_PrintBCD1
+               00754 ;       .line   86; sync24.c    MIOS_LCD_PrintCString("][");
+00DE 0E00      00755         MOVLW   UPPER(__str_1)
+00E0 6EED      00756         MOVWF   POSTDEC1
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE 15
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+00E2 0E00      00757         MOVLW   HIGH(__str_1)
+00E4 6EED      00758         MOVWF   POSTDEC1
+00E6 0E00      00759         MOVLW   LOW(__str_1)
+00E8 EC00 F000 00760         CALL    _MIOS_LCD_PrintCString
+00EC 0E02      00761         MOVLW   0x02
+00EE 26E9      00762         ADDWF   FSR1L, F
+00F0 0000      00763         BANKSEL _nbpat
+               00764 ;       .line   87; sync24.c    MIOS_LCD_PrintBCD2(nbpat);//
+00F2 5100      00765         MOVF    _nbpat, W, B
+00F4 EC00 F000 00766         CALL    _MIOS_LCD_PrintBCD2
+               00767 ;       .line   88; sync24.c    MIOS_LCD_PrintCString("]");
+00F8 0E00      00768         MOVLW   UPPER(__str_2)
+00FA 6EED      00769         MOVWF   POSTDEC1
+00FC 0E00      00770         MOVLW   HIGH(__str_2)
+00FE 6EED      00771         MOVWF   POSTDEC1
+0100 0E00      00772         MOVLW   LOW(__str_2)
+0102 EC00 F000 00773         CALL    _MIOS_LCD_PrintCString
+0106 0E02      00774         MOVLW   0x02
+0108 26E9      00775         ADDWF   FSR1L, F
+010A 00776 _00122_DS_:
+010A 0000      00777         BANKSEL _play
+               00778 ;       .line   93; sync24.c    if(play==0){
+010C 5100      00779         MOVF    _play, W, B
+010E E100      00780         BNZ     _00127_DS_
+               00781 ;       .line   94; sync24.c    play=1;// PLAY
+0110 0E01      00782         MOVLW   0x01
+               00783 ; removed redundant BANKSEL
+0112 6F00      00784         MOVWF   _play, B
+               00785 ;       .line   95; sync24.c    PORTAbits.RA0 = 1;//LEDS
+0114 8000      00786         BSF     _PORTAbits, 0
+               00787 ;       .line   96; sync24.c    PORTAbits.RA2 = 1;//new SYNC24 startstop PIN
+0116 8400      00788         BSF     _PORTAbits, 2
+               00789 ;       .line   97; sync24.c    MIOS_MIDI_TxBufferPut(0xFA); // MIDI START
+0118 0EFA      00790         MOVLW   0xfa
+011A EC00 F000 00791         CALL    _MIOS_MIDI_TxBufferPut
+011E 00792 _00127_DS_:
+               00793 ;       .line   102; sync24.c   timer=100;// millisec
+011E 0E64      00794         MOVLW   0x64
+0120 0000      00795         BANKSEL _timer
+0122 6F00      00796         MOVWF   _timer, B
+               00797 ; removed redundant BANKSEL
+0124 6B00      00798         CLRF    (_timer + 1), B
+               00799 ;       .line   104; sync24.c   SEND_PULSE();
+0126 EC00 F000 00800         CALL    _SEND_PULSE
+012A CFEC F000 00801         MOVFF   PREINC1, r0x00
+012E CFEC FFD9 00802         MOVFF   PREINC1, FSR2L
+0132 0012      00803         RETURN  
+               00804 
+               00805 ; ; Starting pCode block
+               00806 S_main__SEND_PULSE      code
+0000 00807 _SEND_PULSE:
+               00808 ;       .line   20; sync24.c    void SEND_PULSE(void){
+0000 CFD9 FFED 00809         MOVFF   FSR2L, POSTDEC1
+0004 CFE9 FFD9 00810         MOVFF   FSR1L, FSR2L
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE 16
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               00811 ;       .line   30; sync24.c    PORTDbits.RD4 = 1;    PORTDbits.RD4 = 0;
+0008 8800      00812         BSF     _PORTDbits, 4
+000A 9800      00813         BCF     _PORTDbits, 4
+               00814 ;       .line   31; sync24.c    PORTDbits.RD4 = 1;    PORTDbits.RD4 = 0;
+000C 8800      00815         BSF     _PORTDbits, 4
+000E 9800      00816         BCF     _PORTDbits, 4
+               00817 ;       .line   32; sync24.c    PORTDbits.RD4 = 1;    PORTDbits.RD4 = 0;
+0010 8800      00818         BSF     _PORTDbits, 4
+0012 9800      00819         BCF     _PORTDbits, 4
+               00820 ;       .line   33; sync24.c    PORTDbits.RD4 = 1;    PORTDbits.RD4 = 0;
+0014 8800      00821         BSF     _PORTDbits, 4
+0016 9800      00822         BCF     _PORTDbits, 4
+               00823 ;       .line   34; sync24.c    PORTDbits.RD4 = 1;    PORTDbits.RD4 = 0;
+0018 8800      00824         BSF     _PORTDbits, 4
+001A 9800      00825         BCF     _PORTDbits, 4
+               00826 ;       .line   35; sync24.c    PORTDbits.RD4 = 1;    PORTDbits.RD4 = 0;
+001C 8800      00827         BSF     _PORTDbits, 4
+001E 9800      00828         BCF     _PORTDbits, 4
+               00829 ;       .line   36; sync24.c    PORTDbits.RD4 = 1;    PORTDbits.RD4 = 0;
+0020 8800      00830         BSF     _PORTDbits, 4
+0022 9800      00831         BCF     _PORTDbits, 4
+               00832 ;       .line   37; sync24.c    PORTDbits.RD4 = 1;    PORTDbits.RD4 = 0;
+0024 8800      00833         BSF     _PORTDbits, 4
+0026 9800      00834         BCF     _PORTDbits, 4
+               00835 ;       .line   38; sync24.c    return;
+0028 CFEC FFD9 00836         MOVFF   PREINC1, FSR2L
+002C 0012      00837         RETURN  
+               00838 
+               00839 ; ; Starting pCode block
+002E 00840 __str_0:
+002E 005B      00841         DB      0x5b, 0x00
+               00842 ; ; Starting pCode block
+0030 00843 __str_1:
+0030 5B5D 0000 00844         DB      0x5d, 0x5b, 0x00
+               00845 ; ; Starting pCode block
+0034 00846 __str_2:
+0034 005D      00847         DB      0x5d, 0x00
+               00848 ; ; Starting pCode block
+0036 00849 __str_3:
+0036 5453 504F 00850         DB      0x53, 0x54, 0x4f, 0x50, 0x20, 0x4e, 0x4f, 0x57, 0x00
+     4E20 574F 
+     0000      
+               00851 ; ; Starting pCode block
+0040 00852 __str_4:
+0040 734C 6A64 00853         DB      0x4c, 0x73, 0x64, 0x6a, 0x20, 0x53, 0x6c, 0x61, 0x76, 0x65, 0x20, 0x53
+     5320 616C 
+     6576 5320 
+004C 6E79 2063 00854         DB      0x79, 0x6e, 0x63, 0x20, 0x20, 0x00
+     0020      
+               00855 ; ; Starting pCode block
+0052 00856 __str_5:
+0052 5453 504F 00857         DB      0x53, 0x54, 0x4f, 0x50, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x00
+     2020 2020 
+     2020 0000 
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE 17
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               00858 
+               00859 
+               00860 ; Statistics:
+               00861 ; code size:      902 (0x0386) bytes ( 0.69%)
+               00862 ;                 451 (0x01c3) words
+               00863 ; udata size:       5 (0x0005) bytes ( 0.39%)
+               00864 ; access size:      1 (0x0001) bytes
+               00865 
+               00866 
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE 18
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BANKED                            00000001
+FSR1L                             00000FE9
+FSR2L                             00000FD9
+POSTDEC1                          00000FED
+PREINC1                           00000FEC
+STATUS                            00000FD8
+_00110_DS_                        0000003C
+_00111_DS_                        0000004A
+_00114_DS_                        0000002C
+_00116_DS_                        00000080
+_00118_DS_                        00000090
+_00120_DS_                        0000009C
+_00121_DS_                        0000006A
+_00122_DS_                        0000010A
+_00125_DS_                        00000056
+_00127_DS_                        0000011E
+_00139_DS_                        00000020
+_00146_DS_                        00000060
+_00173_DS_                        00000024
+_00177_DS_                        0000004A
+_00178_DS_                        0000004C
+_00180_DS_                        00000066
+_00182_DS_                        00000074
+_00193_DS_                        0000003A
+_00194_DS_                        00000058
+_00225_DS_                        00000028
+_00226_DS_                        00000030
+_00227_DS_                        00000052
+_00231_DS_                        0000005E
+_10272_DS_                        00000046
+_20273_DS_                        00000064
+_ADCON0                           00000000
+_ADCON0bits                       00000000
+_ADCON1                           00000000
+_ADCON1bits                       00000000
+_ADRESH                           00000000
+_ADRESL                           00000000
+_AIN_NotifyChange                 00000000
+_BSR                              00000000
+_CCP1CON                          00000000
+_CCP1CONbits                      00000000
+_CCP2CON                          00000000
+_CCP2CONbits                      00000000
+_CCPR1H                           00000000
+_CCPR1L                           00000000
+_CCPR2H                           00000000
+_CCPR2L                           00000000
+_DIN_NotifyToggle                 00000000
+_DISPLAY_Init                     00000000
+_DISPLAY_Tick                     00000000
+_EEADR                            00000000
+_EECON1                           00000000
+_EECON1bits                       00000000
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE 19
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+_EECON2                           00000000
+_EEDATA                           00000000
+_ENC_NotifyChange                 00000000
+_FSR0H                            00000000
+_FSR0L                            00000000
+_FSR1H                            00000000
+_FSR1L                            00000000
+_FSR2H                            00000000
+_FSR2L                            00000000
+_GB_INIT                          00000000
+_INDF0                            00000000
+_INDF1                            00000000
+_INDF2                            00000000
+_INTCON                           00000000
+_INTCON2                          00000000
+_INTCON2bits                      00000000
+_INTCON3                          00000000
+_INTCON3bits                      00000000
+_INTCONbits                       00000000
+_IPR1                             00000000
+_IPR1bits                         00000000
+_IPR2                             00000000
+_IPR2bits                         00000000
+_Init                             00000000
+_LATA                             00000000
+_LATAbits                         00000000
+_LATB                             00000000
+_LATBbits                         00000000
+_LATC                             00000000
+_LATCbits                         00000000
+_LATD                             00000000
+_LATDbits                         00000000
+_LATE                             00000000
+_LATEbits                         00000000
+_LVDCON                           00000000
+_LVDCONbits                       00000000
+_MIOS_BOX_CFG0                    00000000
+_MIOS_BOX_CFG1                    00000000
+_MIOS_BOX_STAT                    00000000
+_MIOS_ENC_PIN_TABLE               00000000
+_MIOS_LCD_Clear                   00000000
+_MIOS_LCD_CursorSet               00000000
+_MIOS_LCD_PrintBCD1               00000000
+_MIOS_LCD_PrintBCD2               00000000
+_MIOS_LCD_PrintCString            00000000
+_MIOS_MIDI_TxBufferPut            00000000
+_MIOS_MPROC_EVENT_TABLE           00000000
+_MIOS_PARAMETER1                  00000000
+_MIOS_PARAMETER2                  00000000
+_MIOS_PARAMETER3                  00000000
+_MIOS_TIMER_Init                  00000000
+_MPROC_NotifyFoundEvent           00000000
+_MPROC_NotifyReceivedByte         00000000
+_MPROC_NotifyReceivedEvnt         00000000
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE 20
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+_MPROC_NotifyTimeout              00000000
+_OSCCON                           00000000
+_OSCCONbits                       00000000
+_PCL                              00000000
+_PCLATH                           00000000
+_PCLATU                           00000000
+_PIE1                             00000000
+_PIE1bits                         00000000
+_PIE2                             00000000
+_PIE2bits                         00000000
+_PIR1                             00000000
+_PIR1bits                         00000000
+_PIR2                             00000000
+_PIR2bits                         00000000
+_PLUSW0                           00000000
+_PLUSW1                           00000000
+_PLUSW2                           00000000
+_PORTA                            00000000
+_PORTAbits                        00000000
+_PORTB                            00000000
+_PORTBbits                        00000000
+_PORTC                            00000000
+_PORTCbits                        00000000
+_PORTD                            00000000
+_PORTDbits                        00000000
+_PORTE                            00000000
+_PORTEbits                        00000000
+_POSTDEC0                         00000000
+_POSTDEC1                         00000000
+_POSTDEC2                         00000000
+_POSTINC0                         00000000
+_POSTINC1                         00000000
+_POSTINC2                         00000000
+_PR2                              00000000
+_PREINC0                          00000000
+_PREINC1                          00000000
+_PREINC2                          00000000
+_PRODH                            00000000
+_PRODL                            00000000
+_RCON                             00000000
+_RCONbits                         00000000
+_RCREG                            00000000
+_RCSTA                            00000000
+_RCSTAbits                        00000000
+_SEND_PULSE                       00000000
+_SPBRG                            00000000
+_SR_Service_Finish                00000000
+_SR_Service_Prepare               00000000
+_SSPADD                           00000000
+_SSPBUF                           00000000
+_SSPCON1                          00000000
+_SSPCON1bits                      00000000
+_SSPCON2                          00000000
+_SSPCON2bits                      00000000
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE 21
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+_SSPSTAT                          00000000
+_SSPSTATbits                      00000000
+_STATUS                           00000000
+_STATUSbits                       00000000
+_STKPTR                           00000000
+_STKPTRbits                       00000000
+_SYNC24_PUSH                      00000000
+_T0CON                            00000000
+_T0CONbits                        00000000
+_T1CON                            00000000
+_T1CONbits                        00000000
+_T2CON                            00000000
+_T2CONbits                        00000000
+_T3CON                            00000000
+_T3CONbits                        00000000
+_TABLAT                           00000000
+_TBLPTRH                          00000000
+_TBLPTRL                          00000000
+_TBLPTRU                          00000000
+_TMR0H                            00000000
+_TMR0L                            00000000
+_TMR1H                            00000000
+_TMR1L                            00000000
+_TMR2                             00000000
+_TMR3H                            00000000
+_TMR3L                            00000000
+_TOSH                             00000000
+_TOSL                             00000000
+_TOSU                             00000000
+_TRISA                            00000000
+_TRISAbits                        00000000
+_TRISB                            00000000
+_TRISBbits                        00000000
+_TRISC                            00000000
+_TRISCbits                        00000000
+_TRISD                            00000000
+_TRISDbits                        00000000
+_TRISE                            00000000
+_TRISEbits                        00000000
+_TXREG                            00000000
+_TXSTA                            00000000
+_TXSTAbits                        00000000
+_Tick                             00000000
+_Timer                            00000000
+_WDTCON                           00000000
+_WDTCONbits                       00000000
+_WREG                             00000000
+__18F452                          00000001
+__str_0                           0000002E
+__str_1                           00000030
+__str_2                           00000034
+__str_3                           00000036
+__str_4                           00000040
+__str_5                           00000052
+gpasm-0.13.7 beta               _output/main.asm12-2-2013  22:51:28          PAGE 22
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+_last                             00000006
+_midiplay                         00000005
+_nbpat                            00000000
+_nbpulse                          00000000
+_nbpulse24                        00000000
+_nbstep                           00000000
+_nbtik                            00000000
+_play                             00000004
+_timer                            00000000
+_timer24                          00000002
+r0x00                             00000010
+
+
+Errors   :       0
+Warnings :       0 reported,       0 suppressed
+Messages :       0 reported,       0 suppressed
+

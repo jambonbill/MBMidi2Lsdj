@@ -1,0 +1,972 @@
+gplink-0.13.7 beta
+Copyright (c) 1998-2005 gputils project
+Listing File Generated: 12-2-2013  22:51:29
+ 
+ 
+Address  Value    Disassembly              Source
+-------  -----    -----------              ------
+                                           ;; BEGIN inserted by fixasm.pl
+                                           ;; MPASM workarounds:
+                                           BANKED  EQU 1
+                                           ;; END inserted by fixasm.pl
+                                           ;--------------------------------------------------------
+                                           ; File Created by SDCC : free open source ANSI-C Compiler
+                                           ; Version 3.1.0 #7066 (Jun 14 2012) (Linux)
+                                           ; This file was generated Mon Dec  2 22:51:28 2013
+                                           ;--------------------------------------------------------
+                                           ; PIC16 port for the Microchip 16-bit core micros
+                                           ;--------------------------------------------------------
+                                           	list	p=18f452
+                                           
+                                           	radix dec
+                                           
+                                           ;--------------------------------------------------------
+                                           ; public variables in this module
+                                           ;--------------------------------------------------------
+                                           	global _nbpulse
+                                           	global _nbpulse24
+                                           	global _nbtik
+                                           	global _nbstep
+                                           	global _nbpat
+                                           	global _timer
+                                           	global _timer24
+                                           	global _play
+                                           	global _midiplay
+                                           	global _last
+                                           	global _SEND_PULSE
+                                           	global _SYNC24_PUSH
+                                           	global _GB_INIT
+                                           	global _Init
+                                           	global _Tick
+                                           	global _Timer
+                                           	global _DISPLAY_Init
+                                           	global _DISPLAY_Tick
+                                           	global _MPROC_NotifyReceivedEvnt
+                                           	global _MPROC_NotifyFoundEvent
+                                           	global _MPROC_NotifyTimeout
+                                           	global _MPROC_NotifyReceivedByte
+                                           	global _SR_Service_Prepare
+                                           	global _SR_Service_Finish
+                                           	global _DIN_NotifyToggle
+                                           	global _ENC_NotifyChange
+                                           	global _AIN_NotifyChange
+                                           
+                                           ;--------------------------------------------------------
+                                           ; extern variables in this module
+                                           ;--------------------------------------------------------
+                                           	extern _MIOS_BOX_CFG0
+                                           	extern _MIOS_BOX_CFG1
+                                           	extern _MIOS_BOX_STAT
+                                           	extern _MIOS_PARAMETER1
+                                           	extern _MIOS_PARAMETER2
+                                           	extern _MIOS_PARAMETER3
+                                           	extern _PORTAbits
+                                           	extern _PORTBbits
+                                           	extern _PORTCbits
+                                           	extern _PORTDbits
+                                           	extern _PORTEbits
+                                           	extern _LATAbits
+                                           	extern _LATBbits
+                                           	extern _LATCbits
+                                           	extern _LATDbits
+                                           	extern _LATEbits
+                                           	extern _TRISAbits
+                                           	extern _TRISBbits
+                                           	extern _TRISCbits
+                                           	extern _TRISDbits
+                                           	extern _TRISEbits
+                                           	extern _PIE1bits
+                                           	extern _PIR1bits
+                                           	extern _IPR1bits
+                                           	extern _PIE2bits
+                                           	extern _PIR2bits
+                                           	extern _IPR2bits
+                                           	extern _EECON1bits
+                                           	extern _RCSTAbits
+                                           	extern _TXSTAbits
+                                           	extern _T3CONbits
+                                           	extern _CCP2CONbits
+                                           	extern _CCP1CONbits
+                                           	extern _ADCON1bits
+                                           	extern _ADCON0bits
+                                           	extern _SSPCON2bits
+                                           	extern _SSPCON1bits
+                                           	extern _SSPSTATbits
+                                           	extern _T2CONbits
+                                           	extern _T1CONbits
+                                           	extern _RCONbits
+                                           	extern _WDTCONbits
+                                           	extern _LVDCONbits
+                                           	extern _OSCCONbits
+                                           	extern _T0CONbits
+                                           	extern _STATUSbits
+                                           	extern _INTCON3bits
+                                           	extern _INTCON2bits
+                                           	extern _INTCONbits
+                                           	extern _STKPTRbits
+                                           	extern _PORTA
+                                           	extern _PORTB
+                                           	extern _PORTC
+                                           	extern _PORTD
+                                           	extern _PORTE
+                                           	extern _LATA
+                                           	extern _LATB
+                                           	extern _LATC
+                                           	extern _LATD
+                                           	extern _LATE
+                                           	extern _TRISA
+                                           	extern _TRISB
+                                           	extern _TRISC
+                                           	extern _TRISD
+                                           	extern _TRISE
+                                           	extern _PIE1
+                                           	extern _PIR1
+                                           	extern _IPR1
+                                           	extern _PIE2
+                                           	extern _PIR2
+                                           	extern _IPR2
+                                           	extern _EECON1
+                                           	extern _EECON2
+                                           	extern _EEDATA
+                                           	extern _EEADR
+                                           	extern _RCSTA
+                                           	extern _TXSTA
+                                           	extern _TXREG
+                                           	extern _RCREG
+                                           	extern _SPBRG
+                                           	extern _T3CON
+                                           	extern _TMR3L
+                                           	extern _TMR3H
+                                           	extern _CCP2CON
+                                           	extern _CCPR2L
+                                           	extern _CCPR2H
+                                           	extern _CCP1CON
+                                           	extern _CCPR1L
+                                           	extern _CCPR1H
+                                           	extern _ADCON1
+                                           	extern _ADCON0
+                                           	extern _ADRESL
+                                           	extern _ADRESH
+                                           	extern _SSPCON2
+                                           	extern _SSPCON1
+                                           	extern _SSPSTAT
+                                           	extern _SSPADD
+                                           	extern _SSPBUF
+                                           	extern _T2CON
+                                           	extern _PR2
+                                           	extern _TMR2
+                                           	extern _T1CON
+                                           	extern _TMR1L
+                                           	extern _TMR1H
+                                           	extern _RCON
+                                           	extern _WDTCON
+                                           	extern _LVDCON
+                                           	extern _OSCCON
+                                           	extern _T0CON
+                                           	extern _TMR0L
+                                           	extern _TMR0H
+                                           	extern _STATUS
+                                           	extern _FSR2L
+                                           	extern _FSR2H
+                                           	extern _PLUSW2
+                                           	extern _PREINC2
+                                           	extern _POSTDEC2
+                                           	extern _POSTINC2
+                                           	extern _INDF2
+                                           	extern _BSR
+                                           	extern _FSR1L
+                                           	extern _FSR1H
+                                           	extern _PLUSW1
+                                           	extern _PREINC1
+                                           	extern _POSTDEC1
+                                           	extern _POSTINC1
+                                           	extern _INDF1
+                                           	extern _WREG
+                                           	extern _FSR0L
+                                           	extern _FSR0H
+                                           	extern _PLUSW0
+                                           	extern _PREINC0
+                                           	extern _POSTDEC0
+                                           	extern _POSTINC0
+                                           	extern _INDF0
+                                           	extern _INTCON3
+                                           	extern _INTCON2
+                                           	extern _INTCON
+                                           	extern _PRODL
+                                           	extern _PRODH
+                                           	extern _TABLAT
+                                           	extern _TBLPTRL
+                                           	extern _TBLPTRH
+                                           	extern _TBLPTRU
+                                           	extern _PCL
+                                           	extern _PCLATH
+                                           	extern _PCLATU
+                                           	extern _STKPTR
+                                           	extern _TOSL
+                                           	extern _TOSH
+                                           	extern _TOSU
+                                           	extern _MIOS_MIDI_TxBufferPut
+                                           	extern _MIOS_LCD_Clear
+                                           	extern _MIOS_LCD_CursorSet
+                                           	extern _MIOS_LCD_PrintBCD1
+                                           	extern _MIOS_LCD_PrintBCD2
+                                           	extern _MIOS_LCD_PrintCString
+                                           	extern _MIOS_TIMER_Init
+                                           	extern _MIOS_MPROC_EVENT_TABLE
+                                           	extern _MIOS_ENC_PIN_TABLE
+                                           ;--------------------------------------------------------
+                                           ;	Equates to used internal registers
+                                           ;--------------------------------------------------------
+                                           STATUS	equ	0xfd8
+                                           FSR1L	equ	0xfe9 ;; normaly 0xfe1, changed by fixasm.pl
+                                           FSR2L	equ	0xfd9
+                                           POSTDEC1	equ	0xfed ;; normaly 0xfe5, changed by fixasm.pl
+                                           PREINC1	equ	0xfec ;; normaly 0xfe4, changed by fixasm.pl
+                                           
+                                           
+                                           	idata
+                                           _timer	db	0x00, 0x00
+                                           _timer24	db	0x00, 0x00
+                                           _play	db	0x00
+                                           _midiplay	db	0x00
+                                           _last	db	0x00
+                                           
+                                           
+                                           ; Internal registers
+                                           .registers	udata_ovr	0x010
+                                           r0x00	res	1
+                                           
+                                           udata_main_0	udata
+                                           _nbpulse	res	1
+                                           
+                                           udata_main_1	udata
+                                           _nbpulse24	res	1
+                                           
+                                           udata_main_2	udata
+                                           _nbtik	res	1
+                                           
+                                           udata_main_3	udata
+                                           _nbstep	res	1
+                                           
+                                           udata_main_4	udata
+                                           _nbpat	res	1
+                                           
+                                           ;--------------------------------------------------------
+                                           ; global & static initialisations
+                                           ;--------------------------------------------------------
+                                           ; I code from now on!
+                                           ; ; Starting pCode block
+                                           S_main__AIN_NotifyChange	code
+                                           _AIN_NotifyChange:
+                                           ;	.line	240; main.c	void AIN_NotifyChange(unsigned char pin, unsigned int pin_value) __wparam
+003908   cfd9     movff	0xfd9, 0xfed       	MOVFF	FSR2L, POSTDEC1
+00390a   ffed
+00390c   cfe9     movff	0xfe9, 0xfd9       	MOVFF	FSR1L, FSR2L
+00390e   ffd9
+                                           ;	.line	242; main.c	}
+003910   cfec     movff	0xfec, 0xfd9       	MOVFF	PREINC1, FSR2L
+003912   ffd9
+003914   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__ENC_NotifyChange	code
+                                           _ENC_NotifyChange:
+                                           ;	.line	233; main.c	void ENC_NotifyChange(unsigned char encoder, char incrementer) __wparam
+003916   cfd9     movff	0xfd9, 0xfed       	MOVFF	FSR2L, POSTDEC1
+003918   ffed
+00391a   cfe9     movff	0xfe9, 0xfd9       	MOVFF	FSR1L, FSR2L
+00391c   ffd9
+                                           ;	.line	235; main.c	}
+00391e   cfec     movff	0xfec, 0xfd9       	MOVFF	PREINC1, FSR2L
+003920   ffd9
+003922   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__DIN_NotifyToggle	code
+                                           _DIN_NotifyToggle:
+                                           ;	.line	224; main.c	void DIN_NotifyToggle(unsigned char pin, unsigned char pin_value) __wparam
+003924   cfd9     movff	0xfd9, 0xfed       	MOVFF	FSR2L, POSTDEC1
+003926   ffed
+003928   cfe9     movff	0xfe9, 0xfd9       	MOVFF	FSR1L, FSR2L
+00392a   ffd9
+                                           ;	.line	226; main.c	}
+00392c   cfec     movff	0xfec, 0xfd9       	MOVFF	PREINC1, FSR2L
+00392e   ffd9
+003930   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__SR_Service_Finish	code
+                                           _SR_Service_Finish:
+                                           ;	.line	214; main.c	void SR_Service_Finish(void) __wparam
+003932   cfd9     movff	0xfd9, 0xfed       	MOVFF	FSR2L, POSTDEC1
+003934   ffed
+003936   cfe9     movff	0xfe9, 0xfd9       	MOVFF	FSR1L, FSR2L
+003938   ffd9
+                                           ;	.line	216; main.c	}
+00393a   cfec     movff	0xfec, 0xfd9       	MOVFF	PREINC1, FSR2L
+00393c   ffd9
+00393e   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__SR_Service_Prepare	code
+                                           _SR_Service_Prepare:
+                                           ;	.line	207; main.c	void SR_Service_Prepare(void) __wparam
+003940   cfd9     movff	0xfd9, 0xfed       	MOVFF	FSR2L, POSTDEC1
+003942   ffed
+003944   cfe9     movff	0xfe9, 0xfd9       	MOVFF	FSR1L, FSR2L
+003946   ffd9
+                                           ;	.line	209; main.c	}
+003948   cfec     movff	0xfec, 0xfd9       	MOVFF	PREINC1, FSR2L
+00394a   ffd9
+00394c   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__MPROC_NotifyReceivedByte	code
+                                           _MPROC_NotifyReceivedByte:
+                                           ;	.line	176; main.c	void MPROC_NotifyReceivedByte(unsigned char byte) __wparam
+0035cc   cfd9     movff	0xfd9, 0xfed       	MOVFF	FSR2L, POSTDEC1
+0035ce   ffed
+0035d0   cfe9     movff	0xfe9, 0xfd9       	MOVFF	FSR1L, FSR2L
+0035d2   ffd9
+0035d4   c010     movff	0x10, 0xfed        	MOVFF	r0x00, POSTDEC1
+0035d6   ffed
+0035d8   6e10     movwf	0x10, 0            	MOVWF	r0x00
+                                           ;	.line	180; main.c	switch(byte){
+0035da   5010     movf	0x10, 0, 0          	MOVF	r0x00, W
+0035dc   0af8     xorlw	0xf8               	XORLW	0xf8
+0035de   e01f     bz	0x361e                	BZ	_00227_DS_
+0035e0   5010     movf	0x10, 0, 0          	MOVF	r0x00, W
+0035e2   0afa     xorlw	0xfa               	XORLW	0xfa
+0035e4   e007     bz	0x35f4                	BZ	_00225_DS_
+0035e6   5010     movf	0x10, 0, 0          	MOVF	r0x00, W
+0035e8   0afb     xorlw	0xfb               	XORLW	0xfb
+0035ea   e004     bz	0x35f4                	BZ	_00225_DS_
+0035ec   5010     movf	0x10, 0, 0          	MOVF	r0x00, W
+0035ee   0afc     xorlw	0xfc               	XORLW	0xfc
+0035f0   e005     bz	0x35fc                	BZ	_00226_DS_
+0035f2   d01b     bra	0x362a               	BRA	_00231_DS_
+                                           _00225_DS_:
+                                           ;	.line	186; main.c	midiplay=1;
+0035f4   0e01     movlw	0x1                	MOVLW	0x01
+0035f6   0100     movlb	0                  	BANKSEL	_midiplay
+0035f8   6f85     movwf	0x85, 0x1          	MOVWF	_midiplay, B
+                                           ;	.line	187; main.c	break;
+0035fa   d017     bra	0x362a               	BRA	_00231_DS_
+                                           _00226_DS_:
+                                           ;	.line	190; main.c	MIOS_LCD_CursorSet(0x00);
+0035fc   0e00     movlw	0                  	MOVLW	0x00
+0035fe   ec88     call	0x2d10, 0           	CALL	_MIOS_LCD_CursorSet
+003600   f016
+                                           ;	.line	191; main.c	MIOS_LCD_PrintCString("STOP      ");
+003602   0e00     movlw	0                  	MOVLW	UPPER(__str_5)
+003604   6eed     movwf	0xed, 0            	MOVWF	POSTDEC1
+003606   0e36     movlw	0x36               	MOVLW	HIGH(__str_5)
+003608   6eed     movwf	0xed, 0            	MOVWF	POSTDEC1
+00360a   0e86     movlw	0x86               	MOVLW	LOW(__str_5)
+00360c   ecbb     call	0x3776, 0           	CALL	_MIOS_LCD_PrintCString
+00360e   f01b
+003610   0e02     movlw	0x2                	MOVLW	0x02
+003612   26e9     addwf	0xe9, 0x1, 0       	ADDWF	FSR1L, F
+003614   0100     movlb	0                  	BANKSEL	_midiplay
+                                           ;	.line	192; main.c	midiplay=0;
+003616   6b85     clrf	0x85, 0x1           	CLRF	_midiplay, B
+                                           ;	.line	193; main.c	GB_INIT();
+003618   ec69     call	0x36d2, 0           	CALL	_GB_INIT
+00361a   f01b
+                                           ;	.line	194; main.c	break;
+00361c   d006     bra	0x362a               	BRA	_00231_DS_
+                                           _00227_DS_:
+00361e   0100     movlb	0                  	BANKSEL	_midiplay
+                                           ;	.line	197; main.c	if(midiplay==1){
+003620   5185     movf	0x85, 0, 0x1        	MOVF	_midiplay, W, B
+003622   0a01     xorlw	0x1                	XORLW	0x01
+003624   e102     bnz	0x362a               	BNZ	_00231_DS_
+                                           ;	.line	198; main.c	SYNC24_PUSH();
+003626   ec87     call	0x330e, 0           	CALL	_SYNC24_PUSH
+003628   f019
+                                           _00231_DS_:
+                                           ;	.line	201; main.c	}
+00362a   cfec     movff	0xfec, 0x10        	MOVFF	PREINC1, r0x00
+00362c   f010
+00362e   cfec     movff	0xfec, 0xfd9       	MOVFF	PREINC1, FSR2L
+003630   ffd9
+003632   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__MPROC_NotifyTimeout	code
+                                           _MPROC_NotifyTimeout:
+                                           ;	.line	169; main.c	void MPROC_NotifyTimeout(void) __wparam
+00394e   cfd9     movff	0xfd9, 0xfed       	MOVFF	FSR2L, POSTDEC1
+003950   ffed
+003952   cfe9     movff	0xfe9, 0xfd9       	MOVFF	FSR1L, FSR2L
+003954   ffd9
+                                           ;	.line	171; main.c	}
+003956   cfec     movff	0xfec, 0xfd9       	MOVFF	PREINC1, FSR2L
+003958   ffd9
+00395a   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__MPROC_NotifyFoundEvent	code
+                                           _MPROC_NotifyFoundEvent:
+                                           ;	.line	161; main.c	void MPROC_NotifyFoundEvent(unsigned entry, unsigned char evnt0, unsigned char evnt1, unsigned char evnt2) __wparam
+00395c   cfd9     movff	0xfd9, 0xfed       	MOVFF	FSR2L, POSTDEC1
+00395e   ffed
+003960   cfe9     movff	0xfe9, 0xfd9       	MOVFF	FSR1L, FSR2L
+003962   ffd9
+                                           ;	.line	163; main.c	}
+003964   cfec     movff	0xfec, 0xfd9       	MOVFF	PREINC1, FSR2L
+003966   ffd9
+003968   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__MPROC_NotifyReceivedEvnt	code
+                                           _MPROC_NotifyReceivedEvnt:
+                                           ;	.line	153; main.c	void MPROC_NotifyReceivedEvnt(unsigned char evnt0, unsigned char evnt1, unsigned char evnt2) __wparam
+00396a   cfd9     movff	0xfd9, 0xfed       	MOVFF	FSR2L, POSTDEC1
+00396c   ffed
+00396e   cfe9     movff	0xfe9, 0xfd9       	MOVFF	FSR1L, FSR2L
+003970   ffd9
+                                           ;	.line	155; main.c	}
+003972   cfec     movff	0xfec, 0xfd9       	MOVFF	PREINC1, FSR2L
+003974   ffd9
+003976   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__DISPLAY_Tick	code
+                                           _DISPLAY_Tick:
+                                           ;	.line	146; main.c	void DISPLAY_Tick(void) __wparam
+003978   cfd9     movff	0xfd9, 0xfed       	MOVFF	FSR2L, POSTDEC1
+00397a   ffed
+00397c   cfe9     movff	0xfe9, 0xfd9       	MOVFF	FSR1L, FSR2L
+00397e   ffd9
+                                           ;	.line	148; main.c	}
+003980   cfec     movff	0xfec, 0xfd9       	MOVFF	PREINC1, FSR2L
+003982   ffd9
+003984   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__DISPLAY_Init	code
+                                           _DISPLAY_Init:
+                                           ;	.line	135; main.c	void DISPLAY_Init(void) __wparam
+00374c   cfd9     movff	0xfd9, 0xfed       	MOVFF	FSR2L, POSTDEC1
+00374e   ffed
+003750   cfe9     movff	0xfe9, 0xfd9       	MOVFF	FSR1L, FSR2L
+003752   ffd9
+                                           ;	.line	137; main.c	MIOS_LCD_Clear();
+003754   ec82     call	0x2d04, 0           	CALL	_MIOS_LCD_Clear
+003756   f016
+                                           ;	.line	138; main.c	MIOS_LCD_CursorSet(0x00);
+003758   0e00     movlw	0                  	MOVLW	0x00
+00375a   ec88     call	0x2d10, 0           	CALL	_MIOS_LCD_CursorSet
+00375c   f016
+                                           ;	.line	139; main.c	MIOS_LCD_PrintCString("Lsdj Slave Sync  ");
+00375e   0e00     movlw	0                  	MOVLW	UPPER(__str_4)
+003760   6eed     movwf	0xed, 0            	MOVWF	POSTDEC1
+003762   0e36     movlw	0x36               	MOVLW	HIGH(__str_4)
+003764   6eed     movwf	0xed, 0            	MOVWF	POSTDEC1
+003766   0e74     movlw	0x74               	MOVLW	LOW(__str_4)
+003768   ecbb     call	0x3776, 0           	CALL	_MIOS_LCD_PrintCString
+00376a   f01b
+00376c   0e02     movlw	0x2                	MOVLW	0x02
+00376e   26e9     addwf	0xe9, 0x1, 0       	ADDWF	FSR1L, F
+003770   cfec     movff	0xfec, 0xfd9       	MOVFF	PREINC1, FSR2L
+003772   ffd9
+003774   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__Timer	code
+                                           _Timer:
+                                           ;	.line	99; main.c	void Timer(void) __wparam
+00354e   cfd9     movff	0xfd9, 0xfed       	MOVFF	FSR2L, POSTDEC1
+003550   ffed
+003552   cfe9     movff	0xfe9, 0xfd9       	MOVFF	FSR1L, FSR2L
+003554   ffd9
+003556   c010     movff	0x10, 0xfed        	MOVFF	r0x00, POSTDEC1
+003558   ffed
+                                           ;	.line	103; main.c	char st=PORTCbits.RC2;
+00355a   6a10     clrf	0x10, 0             	CLRF	r0x00
+00355c   b482     btfsc	0x82, 0x2, 0       	BTFSC	_PORTCbits, 2
+00355e   2a10     incf	0x10, 0x1, 0        	INCF	r0x00, F
+                                           ;	.line	105; main.c	if(st!=last){
+003560   5010     movf	0x10, 0, 0          	MOVF	r0x00, W
+003562   0100     movlb	0                  	BANKSEL	_last
+003564   1986     xorwf	0x86, 0, 0x1       	XORWF	_last, W, B
+003566   e005     bz	0x3572                	BZ	_00173_DS_
+                                           ;	.line	106; main.c	if(st==1)SYNC24_PUSH();
+003568   5010     movf	0x10, 0, 0          	MOVF	r0x00, W
+00356a   0a01     xorlw	0x1                	XORLW	0x01
+00356c   e102     bnz	0x3572               	BNZ	_00173_DS_
+00356e   ec87     call	0x330e, 0           	CALL	_SYNC24_PUSH
+003570   f019
+                                           _00173_DS_:
+                                           ;	.line	109; main.c	last=st;
+003572   c010     movff	0x10, 0x86         	MOVFF	r0x00, _last
+003574   f086
+003576   0100     movlb	0                  	BANKSEL	_play
+                                           ;	.line	111; main.c	if(play == 0)return;// STOP
+003578   5184     movf	0x84, 0, 0x1        	MOVF	_play, W, B
+00357a   e023     bz	0x35c2                	BZ	_00182_DS_
+                                           ;	.line	113; main.c	if(timer24>1){//SEND SYNC24 PULSE OUT
+00357c   0e00     movlw	0                  	MOVLW	0x00
+00357e   0100     movlb	0                  	BANKSEL	(_timer24 + 1)
+003580   5d83     subwf	0x83, 0, 0x1       	SUBWF	(_timer24 + 1), W, B
+003582   e102     bnz	0x3588               	BNZ	_00193_DS_
+003584   0e02     movlw	0x2                	MOVLW	0x02
+                                           ; removed redundant BANKSEL
+003586   5d82     subwf	0x82, 0, 0x1       	SUBWF	_timer24, W, B
+                                           _00193_DS_:
+003588   e307     bnc	0x3598               	BNC	_00177_DS_
+                                           ;	.line	114; main.c	timer24--;
+00358a   0eff     movlw	0xff               	MOVLW	0xff
+00358c   0100     movlb	0                  	BANKSEL	_timer24
+00358e   2782     addwf	0x82, 0x1, 0x1     	ADDWF	_timer24, F, B
+003590   e201     bc	0x3594                	BC	_10272_DS_
+                                           ; removed redundant BANKSEL
+003592   0783     decf	0x83, 0x1, 0x1      	DECF	(_timer24 + 1), F, B
+                                           _10272_DS_:
+                                           ;	.line	115; main.c	PORTAbits.RA3 = 1;
+003594   8680     bsf	0x80, 0x3, 0         	BSF	_PORTAbits, 3
+003596   d001     bra	0x359a               	BRA	_00178_DS_
+                                           _00177_DS_:
+                                           ;	.line	117; main.c	PORTAbits.RA3 = 0;
+003598   9680     bcf	0x80, 0x3, 0         	BCF	_PORTAbits, 3
+                                           _00178_DS_:
+                                           ;	.line	121; main.c	if(timer>1){
+00359a   0e00     movlw	0                  	MOVLW	0x00
+00359c   0100     movlb	0                  	BANKSEL	(_timer + 1)
+00359e   5d81     subwf	0x81, 0, 0x1       	SUBWF	(_timer + 1), W, B
+0035a0   e102     bnz	0x35a6               	BNZ	_00194_DS_
+0035a2   0e02     movlw	0x2                	MOVLW	0x02
+                                           ; removed redundant BANKSEL
+0035a4   5d80     subwf	0x80, 0, 0x1       	SUBWF	_timer, W, B
+                                           _00194_DS_:
+0035a6   e306     bnc	0x35b4               	BNC	_00180_DS_
+                                           ;	.line	122; main.c	timer--;
+0035a8   0eff     movlw	0xff               	MOVLW	0xff
+0035aa   0100     movlb	0                  	BANKSEL	_timer
+0035ac   2780     addwf	0x80, 0x1, 0x1     	ADDWF	_timer, F, B
+0035ae   e201     bc	0x35b2                	BC	_20273_DS_
+                                           ; removed redundant BANKSEL
+0035b0   0781     decf	0x81, 0x1, 0x1      	DECF	(_timer + 1), F, B
+                                           _20273_DS_:
+0035b2   d007     bra	0x35c2               	BRA	_00182_DS_
+                                           _00180_DS_:
+0035b4   0100     movlb	0                  	BANKSEL	_play
+                                           ;	.line	124; main.c	play=0;
+0035b6   6b84     clrf	0x84, 0x1           	CLRF	_play, B
+                                           ;	.line	125; main.c	MIOS_MIDI_TxBufferPut(0xFC); // MIDI STOP
+0035b8   0efc     movlw	0xfc               	MOVLW	0xfc
+0035ba   ec24     call	0x2c48, 0           	CALL	_MIOS_MIDI_TxBufferPut
+0035bc   f016
+                                           ;	.line	126; main.c	GB_INIT();
+0035be   ec69     call	0x36d2, 0           	CALL	_GB_INIT
+0035c0   f01b
+                                           _00182_DS_:
+0035c2   cfec     movff	0xfec, 0x10        	MOVFF	PREINC1, r0x00
+0035c4   f010
+0035c6   cfec     movff	0xfec, 0xfd9       	MOVFF	PREINC1, FSR2L
+0035c8   ffd9
+0035ca   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__Tick	code
+                                           _Tick:
+                                           ;	.line	89; main.c	void Tick(void) __wparam
+003986   cfd9     movff	0xfd9, 0xfed       	MOVFF	FSR2L, POSTDEC1
+003988   ffed
+00398a   cfe9     movff	0xfe9, 0xfd9       	MOVFF	FSR1L, FSR2L
+00398c   ffd9
+                                           ;	.line	91; main.c	}
+00398e   cfec     movff	0xfec, 0xfd9       	MOVFF	PREINC1, FSR2L
+003990   ffd9
+003992   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__Init	code
+                                           _Init:
+                                           ;	.line	62; main.c	void Init(void) __wparam
+003710   cfd9     movff	0xfd9, 0xfed       	MOVFF	FSR2L, POSTDEC1
+003712   ffed
+003714   cfe9     movff	0xfe9, 0xfd9       	MOVFF	FSR1L, FSR2L
+003716   ffd9
+                                           ;	.line	67; main.c	MIOS_TIMER_Init(0, 10000); // 1 mS / 100 nS = 10000 cycles	
+003718   0e27     movlw	0x27               	MOVLW	0x27
+00371a   6eed     movwf	0xed, 0            	MOVWF	POSTDEC1
+00371c   0e10     movlw	0x10               	MOVLW	0x10
+00371e   6eed     movwf	0xed, 0            	MOVWF	POSTDEC1
+003720   0e00     movlw	0                  	MOVLW	0x00
+003722   ec6d     call	0x38da, 0           	CALL	_MIOS_TIMER_Init
+003724   f01c
+003726   0e02     movlw	0x2                	MOVLW	0x02
+003728   26e9     addwf	0xe9, 0x1, 0       	ADDWF	FSR1L, F
+                                           ;	.line	70; main.c	ADCON1 = 0x07;
+00372a   0e07     movlw	0x7                	MOVLW	0x07
+00372c   6ec1     movwf	0xc1, 0            	MOVWF	_ADCON1
+                                           ;	.line	71; main.c	TRISA &= 0xd0;
+00372e   0ed0     movlw	0xd0               	MOVLW	0xd0
+003730   1692     andwf	0x92, 0x1, 0       	ANDWF	_TRISA, F
+                                           ;	.line	72; main.c	TRISE &= 0xf8;
+003732   0ef8     movlw	0xf8               	MOVLW	0xf8
+003734   1696     andwf	0x96, 0x1, 0       	ANDWF	_TRISE, F
+                                           ;	.line	75; main.c	PORTAbits.RA0 = 0;//led 1
+003736   9080     bcf	0x80, 0, 0           	BCF	_PORTAbits, 0
+                                           ;	.line	76; main.c	PORTAbits.RA1 = 1;//led2
+003738   8280     bsf	0x80, 0x1, 0         	BSF	_PORTAbits, 1
+                                           ;	.line	77; main.c	PORTAbits.RA2 = 0;//sync24 runstop
+00373a   9480     bcf	0x80, 0x2, 0         	BCF	_PORTAbits, 2
+                                           ;	.line	78; main.c	PORTAbits.RA3 = 0;//sync24 clock
+00373c   9680     bcf	0x80, 0x3, 0         	BCF	_PORTAbits, 3
+                                           ;	.line	79; main.c	PORTAbits.RA5 = 0;//free -> no typo! RA4 is allocated by IIC
+00373e   9a80     bcf	0x80, 0x5, 0         	BCF	_PORTAbits, 5
+                                           ;	.line	80; main.c	PORTEbits.RE0 = 0;//free
+003740   9084     bcf	0x84, 0, 0           	BCF	_PORTEbits, 0
+                                           ;	.line	81; main.c	PORTEbits.RE1 = 0;//free
+003742   9284     bcf	0x84, 0x1, 0         	BCF	_PORTEbits, 1
+                                           ;	.line	82; main.c	PORTEbits.RE2 = 0;//free	
+003744   9484     bcf	0x84, 0x2, 0         	BCF	_PORTEbits, 2
+003746   cfec     movff	0xfec, 0xfd9       	MOVFF	PREINC1, FSR2L
+003748   ffd9
+00374a   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__GB_INIT	code
+                                           _GB_INIT:
+                                           ;	.line	36; main.c	void GB_INIT(void){// RESET
+0036d2   cfd9     movff	0xfd9, 0xfed       	MOVFF	FSR2L, POSTDEC1
+0036d4   ffed
+0036d6   cfe9     movff	0xfe9, 0xfd9       	MOVFF	FSR1L, FSR2L
+0036d8   ffd9
+                                           ;	.line	38; main.c	MIOS_LCD_CursorSet(0x00);
+0036da   0e00     movlw	0                  	MOVLW	0x00
+0036dc   ec88     call	0x2d10, 0           	CALL	_MIOS_LCD_CursorSet
+0036de   f016
+                                           ;	.line	39; main.c	MIOS_LCD_PrintCString("STOP NOW");
+0036e0   0e00     movlw	0                  	MOVLW	UPPER(__str_3)
+0036e2   6eed     movwf	0xed, 0            	MOVWF	POSTDEC1
+0036e4   0e36     movlw	0x36               	MOVLW	HIGH(__str_3)
+0036e6   6eed     movwf	0xed, 0            	MOVWF	POSTDEC1
+0036e8   0e6a     movlw	0x6a               	MOVLW	LOW(__str_3)
+0036ea   ecbb     call	0x3776, 0           	CALL	_MIOS_LCD_PrintCString
+0036ec   f01b
+0036ee   0e02     movlw	0x2                	MOVLW	0x02
+0036f0   26e9     addwf	0xe9, 0x1, 0       	ADDWF	FSR1L, F
+0036f2   0100     movlb	0                  	BANKSEL	_nbpulse
+                                           ;	.line	40; main.c	nbpulse=0; 
+0036f4   6b87     clrf	0x87, 0x1           	CLRF	_nbpulse, B
+0036f6   0100     movlb	0                  	BANKSEL	_nbtik
+                                           ;	.line	41; main.c	nbtik=0;
+0036f8   6b89     clrf	0x89, 0x1           	CLRF	_nbtik, B
+0036fa   0100     movlb	0                  	BANKSEL	_nbstep
+                                           ;	.line	42; main.c	nbstep=0;
+0036fc   6b8a     clrf	0x8a, 0x1           	CLRF	_nbstep, B
+0036fe   0100     movlb	0                  	BANKSEL	_nbpat
+                                           ;	.line	43; main.c	nbpat=0;
+003700   6b8b     clrf	0x8b, 0x1           	CLRF	_nbpat, B
+                                           ;	.line	51; main.c	PORTAbits.RA0 = 0;//led 1
+003702   9080     bcf	0x80, 0, 0           	BCF	_PORTAbits, 0
+                                           ;	.line	52; main.c	PORTAbits.RA1 = 1;//led 2
+003704   8280     bsf	0x80, 0x1, 0         	BSF	_PORTAbits, 1
+                                           ;	.line	53; main.c	PORTAbits.RA2 = 0;//
+003706   9480     bcf	0x80, 0x2, 0         	BCF	_PORTAbits, 2
+                                           ;	.line	54; main.c	PORTAbits.RA3 = 0;//
+003708   9680     bcf	0x80, 0x3, 0         	BCF	_PORTAbits, 3
+                                           ;	.line	55; main.c	return;
+00370a   cfec     movff	0xfec, 0xfd9       	MOVFF	PREINC1, FSR2L
+00370c   ffd9
+00370e   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__SYNC24_PUSH	code
+                                           _SYNC24_PUSH:
+                                           ;	.line	42; sync24.c	void SYNC24_PUSH(void){
+00330e   cfd9     movff	0xfd9, 0xfed       	MOVFF	FSR2L, POSTDEC1
+003310   ffed
+003312   cfe9     movff	0xfe9, 0xfd9       	MOVFF	FSR1L, FSR2L
+003314   ffd9
+003316   c010     movff	0x10, 0xfed        	MOVFF	r0x00, POSTDEC1
+003318   ffed
+00331a   0100     movlb	0                  	BANKSEL	_nbpulse
+                                           ;	.line	44; sync24.c	nbpulse++;
+00331c   2b87     incf	0x87, 0x1, 0x1      	INCF	_nbpulse, F, B
+00331e   0100     movlb	0                  	BANKSEL	_nbpulse24
+                                           ;	.line	45; sync24.c	nbpulse24++;
+003320   2b88     incf	0x88, 0x1, 0x1      	INCF	_nbpulse24, F, B
+                                           ;	.line	49; sync24.c	if( (play == 1 && nbpulse24>=1) || (midiplay == 1 && nbpulse24>=1) ){
+003322   6a10     clrf	0x10, 0             	CLRF	r0x00
+003324   0100     movlb	0                  	BANKSEL	_play
+003326   5184     movf	0x84, 0, 0x1        	MOVF	_play, W, B
+003328   0a01     xorlw	0x1                	XORLW	0x01
+00332a   e101     bnz	0x332e               	BNZ	_00139_DS_
+00332c   2a10     incf	0x10, 0x1, 0        	INCF	r0x00, F
+                                           _00139_DS_:
+00332e   5010     movf	0x10, 0, 0          	MOVF	r0x00, W
+003330   e004     bz	0x333a                	BZ	_00114_DS_
+003332   0e01     movlw	0x1                	MOVLW	0x01
+003334   0100     movlb	0                  	BANKSEL	_nbpulse24
+003336   5d88     subwf	0x88, 0, 0x1       	SUBWF	_nbpulse24, W, B
+003338   e208     bc	0x334a                	BC	_00110_DS_
+                                           _00114_DS_:
+00333a   0100     movlb	0                  	BANKSEL	_midiplay
+00333c   5185     movf	0x85, 0, 0x1        	MOVF	_midiplay, W, B
+00333e   0a01     xorlw	0x1                	XORLW	0x01
+003340   e10b     bnz	0x3358               	BNZ	_00111_DS_
+003342   0e01     movlw	0x1                	MOVLW	0x01
+003344   0100     movlb	0                  	BANKSEL	_nbpulse24
+003346   5d88     subwf	0x88, 0, 0x1       	SUBWF	_nbpulse24, W, B
+003348   e307     bnc	0x3358               	BNC	_00111_DS_
+                                           _00110_DS_:
+00334a   0100     movlb	0                  	BANKSEL	_nbpulse24
+                                           ;	.line	50; sync24.c	nbpulse24=0;
+00334c   6b88     clrf	0x88, 0x1           	CLRF	_nbpulse24, B
+                                           ;	.line	51; sync24.c	timer24=4;//SYNC 24 Pulse length (ms) :)
+00334e   0e04     movlw	0x4                	MOVLW	0x04
+003350   0100     movlb	0                  	BANKSEL	_timer24
+003352   6f82     movwf	0x82, 0x1          	MOVWF	_timer24, B
+                                           ; removed redundant BANKSEL
+003354   6b83     clrf	0x83, 0x1           	CLRF	(_timer24 + 1), B
+                                           ;	.line	54; sync24.c	PORTAbits.RA3 = 1;
+003356   8680     bsf	0x80, 0x3, 0         	BSF	_PORTAbits, 3
+                                           _00111_DS_:
+                                           ;	.line	58; sync24.c	if( (play == 1 && nbpulse>=3) || (midiplay == 1 && nbpulse>=3) ){	
+003358   5010     movf	0x10, 0, 0          	MOVF	r0x00, W
+00335a   e004     bz	0x3364                	BZ	_00125_DS_
+00335c   0e03     movlw	0x3                	MOVLW	0x03
+00335e   0100     movlb	0                  	BANKSEL	_nbpulse
+003360   5d87     subwf	0x87, 0, 0x1       	SUBWF	_nbpulse, W, B
+003362   e20a     bc	0x3378                	BC	_00121_DS_
+                                           _00125_DS_:
+003364   0100     movlb	0                  	BANKSEL	_midiplay
+003366   5185     movf	0x85, 0, 0x1        	MOVF	_midiplay, W, B
+003368   0a01     xorlw	0x1                	XORLW	0x01
+00336a   e001     bz	0x336e                	BZ	_00146_DS_
+00336c   d055     bra	0x3418               	BRA	_00122_DS_
+                                           _00146_DS_:
+00336e   0e03     movlw	0x3                	MOVLW	0x03
+003370   0100     movlb	0                  	BANKSEL	_nbpulse
+003372   5d87     subwf	0x87, 0, 0x1       	SUBWF	_nbpulse, W, B
+003374   a0d8     btfss	0xd8, 0, 0         	BTFSS	STATUS, 0
+003376   d050     bra	0x3418               	BRA	_00122_DS_
+                                           _00121_DS_:
+003378   0100     movlb	0                  	BANKSEL	_nbpulse
+                                           ;	.line	60; sync24.c	nbpulse=0;
+00337a   6b87     clrf	0x87, 0x1           	CLRF	_nbpulse, B
+00337c   0100     movlb	0                  	BANKSEL	_nbtik
+                                           ;	.line	61; sync24.c	nbtik++;
+00337e   2b89     incf	0x89, 0x1, 0x1      	INCF	_nbtik, F, B
+                                           ;	.line	63; sync24.c	if(nbtik>=8){
+003380   0e08     movlw	0x8                	MOVLW	0x08
+                                           ; removed redundant BANKSEL
+003382   5d89     subwf	0x89, 0, 0x1       	SUBWF	_nbtik, W, B
+003384   e304     bnc	0x338e               	BNC	_00116_DS_
+                                           ; removed redundant BANKSEL
+                                           ;	.line	64; sync24.c	nbtik=0;
+003386   6b89     clrf	0x89, 0x1           	CLRF	_nbtik, B
+003388   0100     movlb	0                  	BANKSEL	_nbstep
+                                           ;	.line	65; sync24.c	nbstep++;
+00338a   2b8a     incf	0x8a, 0x1, 0x1      	INCF	_nbstep, F, B
+                                           ;	.line	66; sync24.c	PORTAbits.RA1 = 1;//LEDS
+00338c   8280     bsf	0x80, 0x1, 0         	BSF	_PORTAbits, 1
+                                           _00116_DS_:
+                                           ;	.line	69; sync24.c	if(nbstep>=4){
+00338e   0e04     movlw	0x4                	MOVLW	0x04
+003390   0100     movlb	0                  	BANKSEL	_nbstep
+003392   5d8a     subwf	0x8a, 0, 0x1       	SUBWF	_nbstep, W, B
+003394   e304     bnc	0x339e               	BNC	_00118_DS_
+                                           ; removed redundant BANKSEL
+                                           ;	.line	70; sync24.c	nbstep=0;
+003396   6b8a     clrf	0x8a, 0x1           	CLRF	_nbstep, B
+003398   0100     movlb	0                  	BANKSEL	_nbpat
+                                           ;	.line	71; sync24.c	nbpat++;
+00339a   2b8b     incf	0x8b, 0x1, 0x1      	INCF	_nbpat, F, B
+                                           ;	.line	72; sync24.c	PORTAbits.RA0 = 1;//LEDS
+00339c   8080     bsf	0x80, 0, 0           	BSF	_PORTAbits, 0
+                                           _00118_DS_:
+                                           ;	.line	75; sync24.c	if(nbtik>1){
+00339e   0e02     movlw	0x2                	MOVLW	0x02
+0033a0   0100     movlb	0                  	BANKSEL	_nbtik
+0033a2   5d89     subwf	0x89, 0, 0x1       	SUBWF	_nbtik, W, B
+0033a4   e302     bnc	0x33aa               	BNC	_00120_DS_
+                                           ;	.line	76; sync24.c	PORTAbits.RA0 = 0;//LEDS
+0033a6   9080     bcf	0x80, 0, 0           	BCF	_PORTAbits, 0
+                                           ;	.line	77; sync24.c	PORTAbits.RA1 = 0;//LEDS
+0033a8   9280     bcf	0x80, 0x1, 0         	BCF	_PORTAbits, 1
+                                           _00120_DS_:
+                                           ;	.line	81; sync24.c	MIOS_LCD_CursorSet(0x00);
+0033aa   0e00     movlw	0                  	MOVLW	0x00
+0033ac   ec88     call	0x2d10, 0           	CALL	_MIOS_LCD_CursorSet
+0033ae   f016
+                                           ;	.line	82; sync24.c	MIOS_LCD_PrintCString("[");
+0033b0   0e00     movlw	0                  	MOVLW	UPPER(__str_0)
+0033b2   6eed     movwf	0xed, 0            	MOVWF	POSTDEC1
+0033b4   0e36     movlw	0x36               	MOVLW	HIGH(__str_0)
+0033b6   6eed     movwf	0xed, 0            	MOVWF	POSTDEC1
+0033b8   0e62     movlw	0x62               	MOVLW	LOW(__str_0)
+0033ba   ecbb     call	0x3776, 0           	CALL	_MIOS_LCD_PrintCString
+0033bc   f01b
+0033be   0e02     movlw	0x2                	MOVLW	0x02
+0033c0   26e9     addwf	0xe9, 0x1, 0       	ADDWF	FSR1L, F
+0033c2   0100     movlb	0                  	BANKSEL	_nbtik
+                                           ;	.line	83; sync24.c	MIOS_LCD_PrintBCD1(nbtik+1);//
+0033c4   2989     incf	0x89, 0, 0x1        	INCF	_nbtik, W, B
+0033c6   6e10     movwf	0x10, 0            	MOVWF	r0x00
+0033c8   5010     movf	0x10, 0, 0          	MOVF	r0x00, W
+0033ca   ec8e     call	0x2d1c, 0           	CALL	_MIOS_LCD_PrintBCD1
+0033cc   f016
+                                           ;	.line	84; sync24.c	MIOS_LCD_PrintCString("][");
+0033ce   0e00     movlw	0                  	MOVLW	UPPER(__str_1)
+0033d0   6eed     movwf	0xed, 0            	MOVWF	POSTDEC1
+0033d2   0e36     movlw	0x36               	MOVLW	HIGH(__str_1)
+0033d4   6eed     movwf	0xed, 0            	MOVWF	POSTDEC1
+0033d6   0e64     movlw	0x64               	MOVLW	LOW(__str_1)
+0033d8   ecbb     call	0x3776, 0           	CALL	_MIOS_LCD_PrintCString
+0033da   f01b
+0033dc   0e02     movlw	0x2                	MOVLW	0x02
+0033de   26e9     addwf	0xe9, 0x1, 0       	ADDWF	FSR1L, F
+0033e0   0100     movlb	0                  	BANKSEL	_nbstep
+                                           ;	.line	85; sync24.c	MIOS_LCD_PrintBCD1(nbstep+1);//
+0033e2   298a     incf	0x8a, 0, 0x1        	INCF	_nbstep, W, B
+0033e4   6e10     movwf	0x10, 0            	MOVWF	r0x00
+0033e6   5010     movf	0x10, 0, 0          	MOVF	r0x00, W
+0033e8   ec8e     call	0x2d1c, 0           	CALL	_MIOS_LCD_PrintBCD1
+0033ea   f016
+                                           ;	.line	86; sync24.c	MIOS_LCD_PrintCString("][");
+0033ec   0e00     movlw	0                  	MOVLW	UPPER(__str_1)
+0033ee   6eed     movwf	0xed, 0            	MOVWF	POSTDEC1
+0033f0   0e36     movlw	0x36               	MOVLW	HIGH(__str_1)
+0033f2   6eed     movwf	0xed, 0            	MOVWF	POSTDEC1
+0033f4   0e64     movlw	0x64               	MOVLW	LOW(__str_1)
+0033f6   ecbb     call	0x3776, 0           	CALL	_MIOS_LCD_PrintCString
+0033f8   f01b
+0033fa   0e02     movlw	0x2                	MOVLW	0x02
+0033fc   26e9     addwf	0xe9, 0x1, 0       	ADDWF	FSR1L, F
+0033fe   0100     movlb	0                  	BANKSEL	_nbpat
+                                           ;	.line	87; sync24.c	MIOS_LCD_PrintBCD2(nbpat);//
+003400   518b     movf	0x8b, 0, 0x1        	MOVF	_nbpat, W, B
+003402   ec90     call	0x2d20, 0           	CALL	_MIOS_LCD_PrintBCD2
+003404   f016
+                                           ;	.line	88; sync24.c	MIOS_LCD_PrintCString("]");
+003406   0e00     movlw	0                  	MOVLW	UPPER(__str_2)
+003408   6eed     movwf	0xed, 0            	MOVWF	POSTDEC1
+00340a   0e36     movlw	0x36               	MOVLW	HIGH(__str_2)
+00340c   6eed     movwf	0xed, 0            	MOVWF	POSTDEC1
+00340e   0e68     movlw	0x68               	MOVLW	LOW(__str_2)
+003410   ecbb     call	0x3776, 0           	CALL	_MIOS_LCD_PrintCString
+003412   f01b
+003414   0e02     movlw	0x2                	MOVLW	0x02
+003416   26e9     addwf	0xe9, 0x1, 0       	ADDWF	FSR1L, F
+                                           _00122_DS_:
+003418   0100     movlb	0                  	BANKSEL	_play
+                                           ;	.line	93; sync24.c	if(play==0){
+00341a   5184     movf	0x84, 0, 0x1        	MOVF	_play, W, B
+00341c   e107     bnz	0x342c               	BNZ	_00127_DS_
+                                           ;	.line	94; sync24.c	play=1;// PLAY
+00341e   0e01     movlw	0x1                	MOVLW	0x01
+                                           ; removed redundant BANKSEL
+003420   6f84     movwf	0x84, 0x1          	MOVWF	_play, B
+                                           ;	.line	95; sync24.c	PORTAbits.RA0 = 1;//LEDS
+003422   8080     bsf	0x80, 0, 0           	BSF	_PORTAbits, 0
+                                           ;	.line	96; sync24.c	PORTAbits.RA2 = 1;//new SYNC24 startstop PIN
+003424   8480     bsf	0x80, 0x2, 0         	BSF	_PORTAbits, 2
+                                           ;	.line	97; sync24.c	MIOS_MIDI_TxBufferPut(0xFA); // MIDI START
+003426   0efa     movlw	0xfa               	MOVLW	0xfa
+003428   ec24     call	0x2c48, 0           	CALL	_MIOS_MIDI_TxBufferPut
+00342a   f016
+                                           _00127_DS_:
+                                           ;	.line	102; sync24.c	timer=100;// millisec
+00342c   0e64     movlw	0x64               	MOVLW	0x64
+00342e   0100     movlb	0                  	BANKSEL	_timer
+003430   6f80     movwf	0x80, 0x1          	MOVWF	_timer, B
+                                           ; removed redundant BANKSEL
+003432   6b81     clrf	0x81, 0x1           	CLRF	(_timer + 1), B
+                                           ;	.line	104; sync24.c	SEND_PULSE();
+003434   ec1a     call	0x3634, 0           	CALL	_SEND_PULSE
+003436   f01b
+003438   cfec     movff	0xfec, 0x10        	MOVFF	PREINC1, r0x00
+00343a   f010
+00343c   cfec     movff	0xfec, 0xfd9       	MOVFF	PREINC1, FSR2L
+00343e   ffd9
+003440   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__SEND_PULSE	code
+                                           _SEND_PULSE:
+                                           ;	.line	20; sync24.c	void SEND_PULSE(void){
+003634   cfd9     movff	0xfd9, 0xfed       	MOVFF	FSR2L, POSTDEC1
+003636   ffed
+003638   cfe9     movff	0xfe9, 0xfd9       	MOVFF	FSR1L, FSR2L
+00363a   ffd9
+                                           ;	.line	30; sync24.c	PORTDbits.RD4 = 1;    PORTDbits.RD4 = 0;
+00363c   8883     bsf	0x83, 0x4, 0         	BSF	_PORTDbits, 4
+00363e   9883     bcf	0x83, 0x4, 0         	BCF	_PORTDbits, 4
+                                           ;	.line	31; sync24.c	PORTDbits.RD4 = 1;    PORTDbits.RD4 = 0;
+003640   8883     bsf	0x83, 0x4, 0         	BSF	_PORTDbits, 4
+003642   9883     bcf	0x83, 0x4, 0         	BCF	_PORTDbits, 4
+                                           ;	.line	32; sync24.c	PORTDbits.RD4 = 1;    PORTDbits.RD4 = 0;
+003644   8883     bsf	0x83, 0x4, 0         	BSF	_PORTDbits, 4
+003646   9883     bcf	0x83, 0x4, 0         	BCF	_PORTDbits, 4
+                                           ;	.line	33; sync24.c	PORTDbits.RD4 = 1;    PORTDbits.RD4 = 0;
+003648   8883     bsf	0x83, 0x4, 0         	BSF	_PORTDbits, 4
+00364a   9883     bcf	0x83, 0x4, 0         	BCF	_PORTDbits, 4
+                                           ;	.line	34; sync24.c	PORTDbits.RD4 = 1;    PORTDbits.RD4 = 0;
+00364c   8883     bsf	0x83, 0x4, 0         	BSF	_PORTDbits, 4
+00364e   9883     bcf	0x83, 0x4, 0         	BCF	_PORTDbits, 4
+                                           ;	.line	35; sync24.c	PORTDbits.RD4 = 1;    PORTDbits.RD4 = 0;
+003650   8883     bsf	0x83, 0x4, 0         	BSF	_PORTDbits, 4
+003652   9883     bcf	0x83, 0x4, 0         	BCF	_PORTDbits, 4
+                                           ;	.line	36; sync24.c	PORTDbits.RD4 = 1;    PORTDbits.RD4 = 0;
+003654   8883     bsf	0x83, 0x4, 0         	BSF	_PORTDbits, 4
+003656   9883     bcf	0x83, 0x4, 0         	BCF	_PORTDbits, 4
+                                           ;	.line	37; sync24.c	PORTDbits.RD4 = 1;    PORTDbits.RD4 = 0;
+003658   8883     bsf	0x83, 0x4, 0         	BSF	_PORTDbits, 4
+00365a   9883     bcf	0x83, 0x4, 0         	BCF	_PORTDbits, 4
+                                           ;	.line	38; sync24.c	return;
+00365c   cfec     movff	0xfec, 0xfd9       	MOVFF	PREINC1, FSR2L
+00365e   ffd9
+003660   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           __str_0:
+003662   005b     dw	0x5b  ;unknown opcode 	DB	0x5b, 0x00
+                                           ; ; Starting pCode block
+                                           __str_1:
+003664   5b5d     subwfb	0x5d, 0x1, 0x1    	DB	0x5d, 0x5b, 0x00
+003666   0000     nop                      
+                                           ; ; Starting pCode block
+                                           __str_2:
+003668   005d     dw	0x5d  ;unknown opcode 	DB	0x5d, 0x00
+                                           ; ; Starting pCode block
+                                           __str_3:
+00366a   5453     subfwb	0x53, 0, 0        	DB	0x53, 0x54, 0x4f, 0x50, 0x20, 0x4e, 0x4f, 0x57, 0x00
+00366c   504f     movf	0x4f, 0, 0          
+00366e   4e20     dcfsnz	0x20, 0x1, 0      
+003670   574f     subfwb	0x4f, 0x1, 0x1    
+003672   0000     nop                      
+                                           ; ; Starting pCode block
+                                           __str_4:
+003674   734c     btg	0x4c, 0x1, 0x1       	DB	0x4c, 0x73, 0x64, 0x6a, 0x20, 0x53, 0x6c, 0x61, 0x76, 0x65, 0x20, 0x53
+003676   6a64     clrf	0x64, 0             
+003678   5320     movf	0x20, 0x1, 0x1      
+00367a   616c     cpfslt	0x6c, 0x1         
+00367c   6576     cpfsgt	0x76, 0x1         
+00367e   5320     movf	0x20, 0x1, 0x1      
+003680   6e79     movwf	0x79, 0            	DB	0x79, 0x6e, 0x63, 0x20, 0x20, 0x00
+003682   2063     addwfc	0x63, 0, 0        
+003684   0020     dw	0x20  ;unknown opcode 
+                                           ; ; Starting pCode block
+                                           __str_5:
+003686   5453     subfwb	0x53, 0, 0        	DB	0x53, 0x54, 0x4f, 0x50, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x00
+003688   504f     movf	0x4f, 0, 0          
+00368a   2020     addwfc	0x20, 0, 0        
+00368c   2020     addwfc	0x20, 0, 0        
+00368e   2020     addwfc	0x20, 0, 0        
+003690   0000     nop                      
+                                           
+                                           
+                                           ; Statistics:
+                                           ; code size:	  902 (0x0386) bytes ( 0.69%)
+                                           ;           	  451 (0x01c3) words
+                                           ; udata size:	    5 (0x0005) bytes ( 0.39%)
+                                           ; access size:	    1 (0x0001) bytes
+                                           
+                                           
+                                           	end

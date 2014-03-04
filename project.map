@@ -1,0 +1,577 @@
+gplink-0.13.7 beta
+Map File - Created 12-2-2013  22:51:29
+ 
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                .org_3000       code   0x003000    program   0x000080
+                .org_3080       code   0x003080    program   0x000200
+                .org_3280       code   0x003280    program   0x000080
+                .org_3300       code   0x003300    program   0x00000e
+      S_main__SYNC24_PUSH       code   0x00330e    program   0x000134
+        MIOS_WRAPPER_CODE       code   0x003442    program   0x00010c
+            S_main__Timer       code   0x00354e    program   0x00007e
+S_main__MPROC_NotifyReceivedByte       code   0x0035cc    program   0x000068
+       S_main__SEND_PULSE       code   0x003634    program   0x00005e
+.MIOS_HLP_16bitAddSaturate       code   0x003692    program   0x000040
+          S_main__GB_INIT       code   0x0036d2    program   0x00003e
+             S_main__Init       code   0x003710    program   0x00003c
+     S_main__DISPLAY_Init       code   0x00374c    program   0x00002a
+   .MIOS_LCD_PrintCString       code   0x003776    program   0x00001c
+         .MIOS_FLASH_Read       code   0x003792    program   0x00001a
+        .MIOS_FLASH_Write       code   0x0037ac    program   0x00001a
+.MIOS_BANKSTICK_WritePage       code   0x0037c6    program   0x000016
+ .MIOS_BANKSTICK_ReadPage       code   0x0037dc    program   0x000016
+.MIOS_LCD_PrintPreconfString       code   0x0037f2    program   0x000014
+    .MIOS_LCD_YAddressSet       code   0x003806    program   0x000014
+.MIOS_CLCD_SpecialCharInit       code   0x00381a    program   0x000014
+   .MIOS_LCD_PrintMessage       code   0x00382e    program   0x000012
+    .MIOS_LCD_PrintString       code   0x003840    program   0x000012
+.MIOS_CLCD_SpecialCharsInit       code   0x003852    program   0x000012
+      .MIOS_GLCD_FontInit       code   0x003864    program   0x000012
+    .MIOS_EEPROM_ReadPage       code   0x003876    program   0x000012
+   .MIOS_EEPROM_WritePage       code   0x003888    program   0x000012
+       .MIOS_MF_FaderMove       code   0x00389a    program   0x000010
+       .MIOS_ENC_SpeedSet       code   0x0038aa    program   0x000010
+        .MIOS_LCD_TypeSet       code   0x0038ba    program   0x000010
+    .MIOS_BANKSTICK_Write       code   0x0038ca    program   0x000010
+         .MIOS_TIMER_Init       code   0x0038da    program   0x000010
+       .MIOS_TIMER_ReInit       code   0x0038ea    program   0x000010
+     .MIOS_BANKSTICK_Read       code   0x0038fa    program   0x00000e
+ S_main__AIN_NotifyChange       code   0x003908    program   0x00000e
+ S_main__ENC_NotifyChange       code   0x003916    program   0x00000e
+ S_main__DIN_NotifyToggle       code   0x003924    program   0x00000e
+S_main__SR_Service_Finish       code   0x003932    program   0x00000e
+S_main__SR_Service_Prepare       code   0x003940    program   0x00000e
+S_main__MPROC_NotifyTimeout       code   0x00394e    program   0x00000e
+S_main__MPROC_NotifyFoundEvent       code   0x00395c    program   0x00000e
+S_main__MPROC_NotifyReceivedEvnt       code   0x00396a    program   0x00000e
+     S_main__DISPLAY_Tick       code   0x003978    program   0x00000e
+             S_main__Tick       code   0x003986    program   0x00000e
+                   .cinit       code   0x003994    program   0x00000e
+        .MIOS_DOUT_PinSet       code   0x0039a2    program   0x00000c
+         .MIOS_DOUT_SRSet       code   0x0039ae    program   0x00000c
+     .MIOS_ENC_Abs7bitAdd       code   0x0039ba    program   0x00000c
+     .MIOS_ENC_Abs7bitSet       code   0x0039c6    program   0x00000c
+       .MIOS_ENC_SpeedGet       code   0x0039d2    program   0x00000c
+      .MIOS_LCD_PrintBCD4       code   0x0039de    program   0x00000c
+      .MIOS_LCD_PrintBCD5       code   0x0039ea    program   0x00000c
+    .MIOS_GLCD_GCursorSet       code   0x0039f6    program   0x00000c
+       .MIOS_EEPROM_Write       code   0x003a02    program   0x00000c
+        .MIOS_HLP_Dec2BCD       code   0x003a0e    program   0x00000c
+         .MIOS_AIN_PinGet       code   0x003a1a    program   0x00000a
+                 .idata_i       code   0x003a24    program   0x000008
+        .MIOS_EEPROM_Read       code   0x003a2c    program   0x000006
+    .MIOS_LCD_YAddressGet       code   0x003a32    program   0x000004
+                   .idata      idata   0x000080       data   0x000007
+           MIOS_VARIABLES      udata   00000000       data   0x000010
+               .registers      udata   0x000010       data   0x000001
+             udata_main_0      udata   0x000087       data   0x000001
+             udata_main_1      udata   0x000088       data   0x000001
+             udata_main_2      udata   0x000089       data   0x000001
+             udata_main_3      udata   0x00008a       data   0x000001
+             udata_main_4      udata   0x00008b       data   0x000001
+       ustat_pic18f452_00      udata   0x000f80       data   0x000005
+       ustat_pic18f452_01      udata   0x000f89       data   0x000005
+       ustat_pic18f452_02      udata   0x000f92       data   0x000005
+       ustat_pic18f452_03      udata   0x000f9d       data   0x000006
+       ustat_pic18f452_04      udata   0x000fa6       data   0x000004
+       ustat_pic18f452_05      udata   0x000fab       data   0x000005
+       ustat_pic18f452_06      udata   0x000fb1       data   0x000003
+       ustat_pic18f452_07      udata   0x000fba       data   0x000006
+       ustat_pic18f452_08      udata   0x000fc1       data   0x000013
+       ustat_pic18f452_09      udata   0x000fd5       data   0x00002b
+ 
+                              Program Memory Usage
+                               Start         End
+                           ---------   ---------
+                            0x003000    0x00307f
+                            0x003080    0x00327f
+                            0x003280    0x0032ff
+                            0x003300    0x00330d
+                            0x003442    0x00354d
+                            0x003a1a    0x003a23
+                            0x00389a    0x0038a9
+                            0x0039a2    0x0039ad
+                            0x0039ae    0x0039b9
+                            0x0039ba    0x0039c5
+                            0x0039c6    0x0039d1
+                            0x0039d2    0x0039dd
+                            0x0038aa    0x0038b9
+                            0x0039de    0x0039e9
+                            0x0039ea    0x0039f5
+                            0x00382e    0x00383f
+                            0x0037f2    0x003805
+                            0x003840    0x003851
+                            0x0038ba    0x0038c9
+                            0x003a32    0x003a35
+                            0x003806    0x003819
+                            0x00381a    0x00382d
+                            0x003852    0x003863
+                            0x003864    0x003875
+                            0x0039f6    0x003a01
+                            0x003a2c    0x003a31
+                            0x003a02    0x003a0d
+                            0x003876    0x003887
+                            0x003888    0x003899
+                            0x003792    0x0037ab
+                            0x0037ac    0x0037c5
+                            0x0038fa    0x003907
+                            0x0038ca    0x0038d9
+                            0x0037c6    0x0037db
+                            0x0037dc    0x0037f1
+                            0x0038da    0x0038e9
+                            0x0038ea    0x0038f9
+                            0x003692    0x0036d1
+                            0x003a0e    0x003a19
+                            0x003776    0x003791
+                            0x003a24    0x003a2b
+                            0x003908    0x003915
+                            0x003916    0x003923
+                            0x003924    0x003931
+                            0x003932    0x00393f
+                            0x003940    0x00394d
+                            0x0035cc    0x003633
+                            0x00394e    0x00395b
+                            0x00395c    0x003969
+                            0x00396a    0x003977
+                            0x003978    0x003985
+                            0x00374c    0x003775
+                            0x00354e    0x0035cb
+                            0x003986    0x003993
+                            0x003710    0x00374b
+                            0x0036d2    0x00370f
+                            0x00330e    0x003441
+                            0x003634    0x003691
+                            0x003994    0x0039a1
+ 
+                            1307 program addresses used
+ 
+                              Symbols
+                     Name    Address   Location    Storage File
+                ---------  ---------  ---------  --------- ---------
+               _User_Init   0x003000    program     static mios_wrapper\user_vectors.inc
+               _USER_Tick   0x003004    program     static mios_wrapper\user_vectors.inc
+              _USER_Timer   0x003008    program     static mios_wrapper\user_vectors.inc
+ _USER_MPROC_DebugTrigger   0x00300c    program     static mios_wrapper\user_vectors.inc
+       _USER_DISPLAY_Init   0x003010    program     static mios_wrapper\user_vectors.inc
+       _USER_DISPLAY_Tick   0x003014    program     static mios_wrapper\user_vectors.inc
+ _USER_SR_Service_Prepare   0x003018    program     static mios_wrapper\user_vectors.inc
+  _USER_SR_Service_Finish   0x00301c    program     static mios_wrapper\user_vectors.inc
+   _USER_DIN_NotifyToggle   0x003020    program     static mios_wrapper\user_vectors.inc
+   _USER_ENC_NotifyChange   0x003024    program     static mios_wrapper\user_vectors.inc
+   _USER_AIN_NotifyChange   0x003028    program     static mios_wrapper\user_vectors.inc
+_USER_MPROC_NotifyReceivedByte   0x00302c    program     static mios_wrapper\user_vectors.inc
+_USER_MPROC_NotifyTimeout   0x003030    program     static mios_wrapper\user_vectors.inc
+_USER_MPROC_NotifyReceivedEvent   0x003034    program     static mios_wrapper\user_vectors.inc
+_USER_MPROC_NotifyFoundEvent   0x003038    program     static mios_wrapper\user_vectors.inc
+           _USER_LCD_Init   0x00303c    program     static mios_wrapper\user_vectors.inc
+          _USER_LCD_Clear   0x003040    program     static mios_wrapper\user_vectors.inc
+      _USER_LCD_CursorSet   0x003044    program     static mios_wrapper\user_vectors.inc
+      _USER_LCD_PrintChar   0x003048    program     static mios_wrapper\user_vectors.inc
+      _USER_MIDI_NotifyRx   0x00304c    program     static mios_wrapper\user_vectors.inc
+      _USER_MIDI_NotifyTx   0x003050    program     static mios_wrapper\user_vectors.inc
+           _USER_LCD_Data   0x003054    program     static mios_wrapper\user_vectors.inc
+            _USER_LCD_Cmd   0x003058    program     static mios_wrapper\user_vectors.inc
+_USER_LCD_SpecialCharInit   0x00305c    program     static mios_wrapper\user_vectors.inc
+         USER_RESERVED_25   0x003060    program     static mios_wrapper\user_vectors.inc
+         USER_RESERVED_26   0x003064    program     static mios_wrapper\user_vectors.inc
+         USER_RESERVED_27   0x003068    program     static mios_wrapper\user_vectors.inc
+         USER_RESERVED_28   0x00306c    program     static mios_wrapper\user_vectors.inc
+         USER_RESERVED_29   0x003070    program     static mios_wrapper\user_vectors.inc
+         USER_RESERVED_30   0x003074    program     static mios_wrapper\user_vectors.inc
+         USER_RESERVED_31   0x003078    program     static mios_wrapper\user_vectors.inc
+         USER_RESERVED_32   0x00307c    program     static mios_wrapper\user_vectors.inc
+  _MIOS_MPROC_EVENT_TABLE   0x003080    program     extern mios_wrapper\mios_tables.inc
+   MIOS_MPROC_EVENT_TABLE   0x003080    program     static mios_wrapper\mios_tables.inc
+      _MIOS_ENC_PIN_TABLE   0x003280    program     extern mios_wrapper\mios_tables.inc
+       MIOS_ENC_PIN_TABLE   0x003280    program     static mios_wrapper\mios_tables.inc
+            USER_LCD_Init   0x003300    program     static mios_wrapper\app_lcd.inc
+           USER_LCD_Clear   0x003302    program     static mios_wrapper\app_lcd.inc
+       USER_LCD_CursorSet   0x003304    program     static mios_wrapper\app_lcd.inc
+       USER_LCD_PrintChar   0x003306    program     static mios_wrapper\app_lcd.inc
+            USER_LCD_Data   0x003308    program     static mios_wrapper\app_lcd.inc
+             USER_LCD_Cmd   0x00330a    program     static mios_wrapper\app_lcd.inc
+ USER_LCD_SpecialCharInit   0x00330c    program     static mios_wrapper\app_lcd.inc
+           _MIOS_BOX_CFG0   00000000       data     extern mios_wrapper\mios_wrapper.asm
+           _MIOS_BOX_CFG1   0x000001       data     extern mios_wrapper\mios_wrapper.asm
+           _MIOS_BOX_STAT   0x000002       data     extern mios_wrapper\mios_wrapper.asm
+         _MIOS_PARAMETER1   0x000003       data     extern mios_wrapper\mios_wrapper.asm
+         _MIOS_PARAMETER2   0x000004       data     extern mios_wrapper\mios_wrapper.asm
+         _MIOS_PARAMETER3   0x000005       data     extern mios_wrapper\mios_wrapper.asm
+                    _TMP1   0x000006       data     static mios_wrapper\mios_wrapper.asm
+                    _TMP2   0x000007       data     static mios_wrapper\mios_wrapper.asm
+                    _TMP3   0x000008       data     static mios_wrapper\mios_wrapper.asm
+                    _TMP4   0x000009       data     static mios_wrapper\mios_wrapper.asm
+                    _TMP5   0x00000a       data     static mios_wrapper\mios_wrapper.asm
+                _IRQ_TMP1   0x00000b       data     static mios_wrapper\mios_wrapper.asm
+                _IRQ_TMP2   0x00000c       data     static mios_wrapper\mios_wrapper.asm
+                _IRQ_TMP3   0x00000d       data     static mios_wrapper\mios_wrapper.asm
+                _IRQ_TMP4   0x00000e       data     static mios_wrapper\mios_wrapper.asm
+                _IRQ_TMP5   0x00000f       data     static mios_wrapper\mios_wrapper.asm
+                USER_Init   0x003442    program     static mios_wrapper\mios_wrapper.asm
+                USER_Tick   0x00344e    program     static mios_wrapper\mios_wrapper.asm
+               USER_Timer   0x00345a    program     static mios_wrapper\mios_wrapper.asm
+  USER_MPROC_DebugTrigger   0x003478    program     static mios_wrapper\mios_wrapper.asm
+        USER_DISPLAY_Init   0x00347a    program     static mios_wrapper\mios_wrapper.asm
+        USER_DISPLAY_Tick   0x003486    program     static mios_wrapper\mios_wrapper.asm
+USER_MPROC_NotifyReceivedEvent   0x003492    program     static mios_wrapper\mios_wrapper.asm
+USER_MPROC_NotifyFoundEvent   0x0034a8    program     static mios_wrapper\mios_wrapper.asm
+ USER_MPROC_NotifyTimeout   0x0034c2    program     static mios_wrapper\mios_wrapper.asm
+USER_MPROC_NotifyReceivedByte   0x0034ce    program     static mios_wrapper\mios_wrapper.asm
+       USER_MIDI_NotifyTx   0x0034da    program     static mios_wrapper\mios_wrapper.asm
+       USER_MIDI_NotifyRx   0x0034dc    program     static mios_wrapper\mios_wrapper.asm
+    USER_DIN_NotifyToggle   0x0034de    program     static mios_wrapper\mios_wrapper.asm
+    USER_ENC_NotifyChange   0x0034ee    program     static mios_wrapper\mios_wrapper.asm
+  USER_SR_Service_Prepare   0x0034fe    program     static mios_wrapper\mios_wrapper.asm
+   USER_SR_Service_Finish   0x00351c    program     static mios_wrapper\mios_wrapper.asm
+    USER_AIN_NotifyChange   0x00353a    program     static mios_wrapper\mios_wrapper.asm
+   _MIOS_MIDI_BeginStream   0x002c00    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_MIDI_DeviceIDAutoSet   0x002c04    program     extern mios_wrapper\mios_wrapper.asm
+   _MIOS_MIDI_DeviceIDGet   0x002c08    program     extern mios_wrapper\mios_wrapper.asm
+   _MIOS_MIDI_DeviceIDSet   0x002c0c    program     extern mios_wrapper\mios_wrapper.asm
+     _MIOS_MIDI_EndStream   0x002c10    program     extern mios_wrapper\mios_wrapper.asm
+          _MIOS_MIDI_Init   0x002c14    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_MIDI_InterfaceAutoSet   0x002c18    program     extern mios_wrapper\mios_wrapper.asm
+  _MIOS_MIDI_InterfaceGet   0x002c1c    program     extern mios_wrapper\mios_wrapper.asm
+  _MIOS_MIDI_InterfaceSet   0x002c20    program     extern mios_wrapper\mios_wrapper.asm
+     _MIOS_MIDI_MergerGet   0x002c24    program     extern mios_wrapper\mios_wrapper.asm
+     _MIOS_MIDI_MergerSet   0x002c28    program     extern mios_wrapper\mios_wrapper.asm
+  _MIOS_MIDI_RxBufferFree   0x002c2c    program     extern mios_wrapper\mios_wrapper.asm
+   _MIOS_MIDI_RxBufferGet   0x002c30    program     extern mios_wrapper\mios_wrapper.asm
+   _MIOS_MIDI_RxBufferPut   0x002c34    program     extern mios_wrapper\mios_wrapper.asm
+  _MIOS_MIDI_RxBufferUsed   0x002c38    program     extern mios_wrapper\mios_wrapper.asm
+ _MIOS_MIDI_TxBufferFlush   0x002c3c    program     extern mios_wrapper\mios_wrapper.asm
+  _MIOS_MIDI_TxBufferFree   0x002c40    program     extern mios_wrapper\mios_wrapper.asm
+   _MIOS_MIDI_TxBufferGet   0x002c44    program     extern mios_wrapper\mios_wrapper.asm
+   _MIOS_MIDI_TxBufferPut   0x002c48    program     extern mios_wrapper\mios_wrapper.asm
+  _MIOS_MIDI_TxBufferUsed   0x002c4c    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_MPROC_MergerDisable   0x002c50    program     extern mios_wrapper\mios_wrapper.asm
+ _MIOS_MPROC_MergerEnable   0x002c54    program     extern mios_wrapper\mios_wrapper.asm
+    _MIOS_MPROC_MergerGet   0x002c58    program     extern mios_wrapper\mios_wrapper.asm
+    _MIOS_AIN_DeadbandGet   0x002c5c    program     extern mios_wrapper\mios_wrapper.asm
+    _MIOS_AIN_DeadbandSet   0x002c60    program     extern mios_wrapper\mios_wrapper.asm
+          _MIOS_AIN_Muxed   0x002c64    program     extern mios_wrapper\mios_wrapper.asm
+      _MIOS_AIN_NumberGet   0x002c68    program     extern mios_wrapper\mios_wrapper.asm
+      _MIOS_AIN_NumberSet   0x002c6c    program     extern mios_wrapper\mios_wrapper.asm
+     _MIOS_AIN_Pin7bitGet   0x002c70    program     extern mios_wrapper\mios_wrapper.asm
+         _MIOS_AIN_PinGet   0x003a1a    program     extern mios_wrapper\mios_wrapper.asm
+      _MIOS_AIN_PinLSBGet   0x002c78    program     extern mios_wrapper\mios_wrapper.asm
+      _MIOS_AIN_PinMSBGet   0x002c7c    program     extern mios_wrapper\mios_wrapper.asm
+        _MIOS_AIN_UnMuxed   0x002c80    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_MF_PWM_DutyCycleDownGet   0x002c84    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_MF_PWM_DutyCycleDownSet   0x002c88    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_MF_PWM_DutyCycleUpGet   0x002c8c    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_MF_PWM_DutyCycleUpSet   0x002c90    program     extern mios_wrapper\mios_wrapper.asm
+     _MIOS_MF_DeadbandGet   0x002c94    program     extern mios_wrapper\mios_wrapper.asm
+     _MIOS_MF_DeadbandSet   0x002c98    program     extern mios_wrapper\mios_wrapper.asm
+         _MIOS_MF_Disable   0x002c9c    program     extern mios_wrapper\mios_wrapper.asm
+          _MIOS_MF_Enable   0x002ca0    program     extern mios_wrapper\mios_wrapper.asm
+       _MIOS_MF_FaderMove   0x00389a    program     extern mios_wrapper\mios_wrapper.asm
+  _MIOS_MF_SuspendDisable   0x002ca8    program     extern mios_wrapper\mios_wrapper.asm
+   _MIOS_MF_SuspendEnable   0x002cac    program     extern mios_wrapper\mios_wrapper.asm
+      _MIOS_MF_SuspendGet   0x002cb0    program     extern mios_wrapper\mios_wrapper.asm
+   _MIOS_MF_PWM_PeriodGet   0x002dfc    program     extern mios_wrapper\mios_wrapper.asm
+   _MIOS_MF_PWM_PeriodSet   0x002e00    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_MF_TouchDetectionReset   0x002e2c    program     extern mios_wrapper\mios_wrapper.asm
+         _MIOS_DIN_PinGet   0x002cb4    program     extern mios_wrapper\mios_wrapper.asm
+          _MIOS_DIN_SRGet   0x002cb8    program     extern mios_wrapper\mios_wrapper.asm
+        _MIOS_DOUT_PinGet   0x002cbc    program     extern mios_wrapper\mios_wrapper.asm
+        _MIOS_DOUT_PinSet   0x0039a2    program     extern mios_wrapper\mios_wrapper.asm
+       _MIOS_DOUT_PinSet0   0x002cc4    program     extern mios_wrapper\mios_wrapper.asm
+       _MIOS_DOUT_PinSet1   0x002cc8    program     extern mios_wrapper\mios_wrapper.asm
+         _MIOS_DOUT_SRGet   0x002ccc    program     extern mios_wrapper\mios_wrapper.asm
+         _MIOS_DOUT_SRSet   0x0039ae    program     extern mios_wrapper\mios_wrapper.asm
+     _MIOS_ENC_Abs7bitAdd   0x0039ba    program     extern mios_wrapper\mios_wrapper.asm
+     _MIOS_ENC_Abs7bitGet   0x002cd8    program     extern mios_wrapper\mios_wrapper.asm
+     _MIOS_ENC_Abs7bitSet   0x0039c6    program     extern mios_wrapper\mios_wrapper.asm
+      _MIOS_ENC_NumberGet   0x002ce0    program     extern mios_wrapper\mios_wrapper.asm
+       _MIOS_ENC_SpeedGet   0x0039d2    program     extern mios_wrapper\mios_wrapper.asm
+       _MIOS_ENC_SpeedSet   0x0038aa    program     extern mios_wrapper\mios_wrapper.asm
+     _MIOS_SRIO_NumberGet   0x002cec    program     extern mios_wrapper\mios_wrapper.asm
+     _MIOS_SRIO_NumberSet   0x002cf0    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_SRIO_TS_SensitivityGet   0x002cf4    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_SRIO_TS_SensitivitySet   0x002cf8    program     extern mios_wrapper\mios_wrapper.asm
+  _MIOS_SRIO_UpdateFrqGet   0x002cfc    program     extern mios_wrapper\mios_wrapper.asm
+  _MIOS_SRIO_UpdateFrqSet   0x002d00    program     extern mios_wrapper\mios_wrapper.asm
+   _MIOS_SRIO_DebounceGet   0x002e28    program     extern mios_wrapper\mios_wrapper.asm
+   _MIOS_SRIO_DebounceSet   0x002e24    program     extern mios_wrapper\mios_wrapper.asm
+          _MIOS_LCD_Clear   0x002d04    program     extern mios_wrapper\mios_wrapper.asm
+            _MIOS_LCD_Cmd   0x002d08    program     extern mios_wrapper\mios_wrapper.asm
+      _MIOS_LCD_CursorGet   0x002d0c    program     extern mios_wrapper\mios_wrapper.asm
+      _MIOS_LCD_CursorSet   0x002d10    program     extern mios_wrapper\mios_wrapper.asm
+           _MIOS_LCD_Data   0x002d14    program     extern mios_wrapper\mios_wrapper.asm
+           _MIOS_LCD_Init   0x002d18    program     extern mios_wrapper\mios_wrapper.asm
+      _MIOS_LCD_PrintBCD1   0x002d1c    program     extern mios_wrapper\mios_wrapper.asm
+      _MIOS_LCD_PrintBCD2   0x002d20    program     extern mios_wrapper\mios_wrapper.asm
+      _MIOS_LCD_PrintBCD3   0x002d24    program     extern mios_wrapper\mios_wrapper.asm
+      _MIOS_LCD_PrintBCD4   0x0039de    program     extern mios_wrapper\mios_wrapper.asm
+      _MIOS_LCD_PrintBCD5   0x0039ea    program     extern mios_wrapper\mios_wrapper.asm
+      _MIOS_LCD_PrintChar   0x002d28    program     extern mios_wrapper\mios_wrapper.asm
+      _MIOS_LCD_PrintHex1   0x002d2c    program     extern mios_wrapper\mios_wrapper.asm
+      _MIOS_LCD_PrintHex2   0x002d30    program     extern mios_wrapper\mios_wrapper.asm
+   _MIOS_LCD_PrintMessage   0x00382e    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_LCD_PrintPreconfString   0x0037f2    program     extern mios_wrapper\mios_wrapper.asm
+    _MIOS_LCD_PrintString   0x003840    program     extern mios_wrapper\mios_wrapper.asm
+    _MIOS_LCD_TypeAutoSet   0x002d40    program     extern mios_wrapper\mios_wrapper.asm
+        _MIOS_LCD_TypeGet   0x002d44    program     extern mios_wrapper\mios_wrapper.asm
+        _MIOS_LCD_TypeSet   0x0038ba    program     extern mios_wrapper\mios_wrapper.asm
+    _MIOS_LCD_YAddressGet   0x003a32    program     extern mios_wrapper\mios_wrapper.asm
+    _MIOS_LCD_YAddressSet   0x003806    program     extern mios_wrapper\mios_wrapper.asm
+   _MIOS_LCD_MessageStart   0x002df4    program     extern mios_wrapper\mios_wrapper.asm
+    _MIOS_LCD_MessageStop   0x002df8    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_CLCD_SpecialCharInit   0x00381a    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_CLCD_SpecialCharsInit   0x003852    program     extern mios_wrapper\mios_wrapper.asm
+      _MIOS_GLCD_FontInit   0x003864    program     extern mios_wrapper\mios_wrapper.asm
+    _MIOS_GLCD_GCursorGet   0x002d58    program     extern mios_wrapper\mios_wrapper.asm
+    _MIOS_GLCD_GCursorSet   0x0039f6    program     extern mios_wrapper\mios_wrapper.asm
+        _MIOS_EEPROM_Read   0x003a2c    program     extern mios_wrapper\mios_wrapper.asm
+       _MIOS_EEPROM_Write   0x003a02    program     extern mios_wrapper\mios_wrapper.asm
+    _MIOS_EEPROM_ReadPage   0x003876    program     extern mios_wrapper\mios_wrapper.asm
+   _MIOS_EEPROM_WritePage   0x003888    program     extern mios_wrapper\mios_wrapper.asm
+         _MIOS_FLASH_Read   0x003792    program     extern mios_wrapper\mios_wrapper.asm
+        _MIOS_FLASH_Write   0x0037ac    program     extern mios_wrapper\mios_wrapper.asm
+     _MIOS_BANKSTICK_Read   0x0038fa    program     extern mios_wrapper\mios_wrapper.asm
+    _MIOS_BANKSTICK_Write   0x0038ca    program     extern mios_wrapper\mios_wrapper.asm
+  _MIOS_BANKSTICK_CtrlSet   0x002ddc    program     extern mios_wrapper\mios_wrapper.asm
+  _MIOS_BANKSTICK_CtrlGet   0x002de0    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_BANKSTICK_WritePage   0x0037c6    program     extern mios_wrapper\mios_wrapper.asm
+ _MIOS_BANKSTICK_ReadPage   0x0037dc    program     extern mios_wrapper\mios_wrapper.asm
+         _MIOS_TIMER_Init   0x0038da    program     extern mios_wrapper\mios_wrapper.asm
+        _MIOS_TIMER_Start   0x002d7c    program     extern mios_wrapper\mios_wrapper.asm
+         _MIOS_TIMER_Stop   0x002d80    program     extern mios_wrapper\mios_wrapper.asm
+       _MIOS_TIMER_ReInit   0x0038ea    program     extern mios_wrapper\mios_wrapper.asm
+  _MIOS_HLP_GetBitANDMask   0x002d88    program     extern mios_wrapper\mios_wrapper.asm
+   _MIOS_HLP_GetBitORMask   0x002d8c    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_HLP_16bitAddSaturate   0x003692    program     extern mios_wrapper\mios_wrapper.asm
+        _MIOS_HLP_Dec2BCD   0x003a0e    program     extern mios_wrapper\mios_wrapper.asm
+              _MIOS_Delay   0x002d9c    program     extern mios_wrapper\mios_wrapper.asm
+       _MIOS_GPCounterGet   0x002da0    program     extern mios_wrapper\mios_wrapper.asm
+              _MIOS_Reset   0x002da4    program     extern mios_wrapper\mios_wrapper.asm
+       _MIOS_SystemResume   0x002da8    program     extern mios_wrapper\mios_wrapper.asm
+      _MIOS_SystemSuspend   0x002dac    program     extern mios_wrapper\mios_wrapper.asm
+         _MIOS_UserResume   0x002db0    program     extern mios_wrapper\mios_wrapper.asm
+        _MIOS_UserSuspend   0x002db4    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_DIN_PinAutoRepeatEnable   0x002dbc    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_DIN_PinAutoRepeatDisable   0x002dc0    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_DIN_PinAutoRepeatGet   0x002dc4    program     extern mios_wrapper\mios_wrapper.asm
+ _MIOS_AIN_DynamicPrioSet   0x002dd0    program     extern mios_wrapper\mios_wrapper.asm
+ _MIOS_AIN_DynamicPrioGet   0x002dd4    program     extern mios_wrapper\mios_wrapper.asm
+    _MIOS_AIN_LastPinsGet   0x002dd8    program     extern mios_wrapper\mios_wrapper.asm
+          _MIOS_IIC_Start   0x002e04    program     extern mios_wrapper\mios_wrapper.asm
+           _MIOS_IIC_Stop   0x002e08    program     extern mios_wrapper\mios_wrapper.asm
+       _MIOS_IIC_ByteSend   0x002e0c    program     extern mios_wrapper\mios_wrapper.asm
+    _MIOS_IIC_ByteReceive   0x002e10    program     extern mios_wrapper\mios_wrapper.asm
+        _MIOS_IIC_AckSend   0x002e14    program     extern mios_wrapper\mios_wrapper.asm
+        _MIOS_IIC_NakSend   0x002e18    program     extern mios_wrapper\mios_wrapper.asm
+        _MIOS_IIC_CtrlSet   0x002e1c    program     extern mios_wrapper\mios_wrapper.asm
+        _MIOS_IIC_CtrlGet   0x002e20    program     extern mios_wrapper\mios_wrapper.asm
+   _MIOS_LCD_PrintCString   0x003776    program     extern mios_wrapper\mios_wrapper.asm
+_MIOS_LCD_PrintCStringLoop   0x003784    program     static mios_wrapper\mios_wrapper.asm
+_MIOS_LCD_PrintCString_End   0x003790    program     static mios_wrapper\mios_wrapper.asm
+                   _PORTA   0x000f80       data     extern _output\pic18f452.asm
+               _PORTAbits   0x000f80       data     extern _output\pic18f452.asm
+                   _PORTB   0x000f81       data     extern _output\pic18f452.asm
+               _PORTBbits   0x000f81       data     extern _output\pic18f452.asm
+                   _PORTC   0x000f82       data     extern _output\pic18f452.asm
+               _PORTCbits   0x000f82       data     extern _output\pic18f452.asm
+                   _PORTD   0x000f83       data     extern _output\pic18f452.asm
+               _PORTDbits   0x000f83       data     extern _output\pic18f452.asm
+                   _PORTE   0x000f84       data     extern _output\pic18f452.asm
+               _PORTEbits   0x000f84       data     extern _output\pic18f452.asm
+                    _LATA   0x000f89       data     extern _output\pic18f452.asm
+                _LATAbits   0x000f89       data     extern _output\pic18f452.asm
+                    _LATB   0x000f8a       data     extern _output\pic18f452.asm
+                _LATBbits   0x000f8a       data     extern _output\pic18f452.asm
+                    _LATC   0x000f8b       data     extern _output\pic18f452.asm
+                _LATCbits   0x000f8b       data     extern _output\pic18f452.asm
+                    _LATD   0x000f8c       data     extern _output\pic18f452.asm
+                _LATDbits   0x000f8c       data     extern _output\pic18f452.asm
+                    _LATE   0x000f8d       data     extern _output\pic18f452.asm
+                _LATEbits   0x000f8d       data     extern _output\pic18f452.asm
+                   _TRISA   0x000f92       data     extern _output\pic18f452.asm
+               _TRISAbits   0x000f92       data     extern _output\pic18f452.asm
+                   _TRISB   0x000f93       data     extern _output\pic18f452.asm
+               _TRISBbits   0x000f93       data     extern _output\pic18f452.asm
+                   _TRISC   0x000f94       data     extern _output\pic18f452.asm
+               _TRISCbits   0x000f94       data     extern _output\pic18f452.asm
+                   _TRISD   0x000f95       data     extern _output\pic18f452.asm
+               _TRISDbits   0x000f95       data     extern _output\pic18f452.asm
+                   _TRISE   0x000f96       data     extern _output\pic18f452.asm
+               _TRISEbits   0x000f96       data     extern _output\pic18f452.asm
+                    _PIE1   0x000f9d       data     extern _output\pic18f452.asm
+                _PIE1bits   0x000f9d       data     extern _output\pic18f452.asm
+                    _PIR1   0x000f9e       data     extern _output\pic18f452.asm
+                _PIR1bits   0x000f9e       data     extern _output\pic18f452.asm
+                    _IPR1   0x000f9f       data     extern _output\pic18f452.asm
+                _IPR1bits   0x000f9f       data     extern _output\pic18f452.asm
+                    _PIE2   0x000fa0       data     extern _output\pic18f452.asm
+                _PIE2bits   0x000fa0       data     extern _output\pic18f452.asm
+                    _PIR2   0x000fa1       data     extern _output\pic18f452.asm
+                _PIR2bits   0x000fa1       data     extern _output\pic18f452.asm
+                    _IPR2   0x000fa2       data     extern _output\pic18f452.asm
+                _IPR2bits   0x000fa2       data     extern _output\pic18f452.asm
+                  _EECON1   0x000fa6       data     extern _output\pic18f452.asm
+              _EECON1bits   0x000fa6       data     extern _output\pic18f452.asm
+                  _EECON2   0x000fa7       data     extern _output\pic18f452.asm
+                  _EEDATA   0x000fa8       data     extern _output\pic18f452.asm
+                   _EEADR   0x000fa9       data     extern _output\pic18f452.asm
+                   _RCSTA   0x000fab       data     extern _output\pic18f452.asm
+               _RCSTAbits   0x000fab       data     extern _output\pic18f452.asm
+                   _TXSTA   0x000fac       data     extern _output\pic18f452.asm
+               _TXSTAbits   0x000fac       data     extern _output\pic18f452.asm
+                   _TXREG   0x000fad       data     extern _output\pic18f452.asm
+                   _RCREG   0x000fae       data     extern _output\pic18f452.asm
+                   _SPBRG   0x000faf       data     extern _output\pic18f452.asm
+                   _T3CON   0x000fb1       data     extern _output\pic18f452.asm
+               _T3CONbits   0x000fb1       data     extern _output\pic18f452.asm
+                   _TMR3L   0x000fb2       data     extern _output\pic18f452.asm
+                   _TMR3H   0x000fb3       data     extern _output\pic18f452.asm
+                 _CCP2CON   0x000fba       data     extern _output\pic18f452.asm
+             _CCP2CONbits   0x000fba       data     extern _output\pic18f452.asm
+                  _CCPR2L   0x000fbb       data     extern _output\pic18f452.asm
+                  _CCPR2H   0x000fbc       data     extern _output\pic18f452.asm
+                 _CCP1CON   0x000fbd       data     extern _output\pic18f452.asm
+             _CCP1CONbits   0x000fbd       data     extern _output\pic18f452.asm
+                  _CCPR1L   0x000fbe       data     extern _output\pic18f452.asm
+                  _CCPR1H   0x000fbf       data     extern _output\pic18f452.asm
+                  _ADCON1   0x000fc1       data     extern _output\pic18f452.asm
+              _ADCON1bits   0x000fc1       data     extern _output\pic18f452.asm
+                  _ADCON0   0x000fc2       data     extern _output\pic18f452.asm
+              _ADCON0bits   0x000fc2       data     extern _output\pic18f452.asm
+                  _ADRESL   0x000fc3       data     extern _output\pic18f452.asm
+                  _ADRESH   0x000fc4       data     extern _output\pic18f452.asm
+                 _SSPCON2   0x000fc5       data     extern _output\pic18f452.asm
+             _SSPCON2bits   0x000fc5       data     extern _output\pic18f452.asm
+                 _SSPCON1   0x000fc6       data     extern _output\pic18f452.asm
+             _SSPCON1bits   0x000fc6       data     extern _output\pic18f452.asm
+                 _SSPSTAT   0x000fc7       data     extern _output\pic18f452.asm
+             _SSPSTATbits   0x000fc7       data     extern _output\pic18f452.asm
+                  _SSPADD   0x000fc8       data     extern _output\pic18f452.asm
+                  _SSPBUF   0x000fc9       data     extern _output\pic18f452.asm
+                   _T2CON   0x000fca       data     extern _output\pic18f452.asm
+               _T2CONbits   0x000fca       data     extern _output\pic18f452.asm
+                     _PR2   0x000fcb       data     extern _output\pic18f452.asm
+                    _TMR2   0x000fcc       data     extern _output\pic18f452.asm
+                   _T1CON   0x000fcd       data     extern _output\pic18f452.asm
+               _T1CONbits   0x000fcd       data     extern _output\pic18f452.asm
+                   _TMR1L   0x000fce       data     extern _output\pic18f452.asm
+                   _TMR1H   0x000fcf       data     extern _output\pic18f452.asm
+                    _RCON   0x000fd0       data     extern _output\pic18f452.asm
+                _RCONbits   0x000fd0       data     extern _output\pic18f452.asm
+                  _WDTCON   0x000fd1       data     extern _output\pic18f452.asm
+              _WDTCONbits   0x000fd1       data     extern _output\pic18f452.asm
+                  _LVDCON   0x000fd2       data     extern _output\pic18f452.asm
+              _LVDCONbits   0x000fd2       data     extern _output\pic18f452.asm
+                  _OSCCON   0x000fd3       data     extern _output\pic18f452.asm
+              _OSCCONbits   0x000fd3       data     extern _output\pic18f452.asm
+                   _T0CON   0x000fd5       data     extern _output\pic18f452.asm
+               _T0CONbits   0x000fd5       data     extern _output\pic18f452.asm
+                   _TMR0L   0x000fd6       data     extern _output\pic18f452.asm
+                   _TMR0H   0x000fd7       data     extern _output\pic18f452.asm
+                  _STATUS   0x000fd8       data     extern _output\pic18f452.asm
+              _STATUSbits   0x000fd8       data     extern _output\pic18f452.asm
+                   _FSR2L   0x000fd9       data     extern _output\pic18f452.asm
+                   _FSR2H   0x000fda       data     extern _output\pic18f452.asm
+                  _PLUSW2   0x000fdb       data     extern _output\pic18f452.asm
+                 _PREINC2   0x000fdc       data     extern _output\pic18f452.asm
+                _POSTDEC2   0x000fdd       data     extern _output\pic18f452.asm
+                _POSTINC2   0x000fde       data     extern _output\pic18f452.asm
+                   _INDF2   0x000fdf       data     extern _output\pic18f452.asm
+                     _BSR   0x000fe0       data     extern _output\pic18f452.asm
+                   _FSR0L   0x000fe1       data     extern _output\pic18f452.asm
+                   _FSR0H   0x000fe2       data     extern _output\pic18f452.asm
+                  _PLUSW0   0x000fe3       data     extern _output\pic18f452.asm
+                 _PREINC0   0x000fe4       data     extern _output\pic18f452.asm
+                _POSTDEC0   0x000fe5       data     extern _output\pic18f452.asm
+                _POSTINC0   0x000fe6       data     extern _output\pic18f452.asm
+                   _INDF0   0x000fe7       data     extern _output\pic18f452.asm
+                    _WREG   0x000fe8       data     extern _output\pic18f452.asm
+                   _FSR1L   0x000fe9       data     extern _output\pic18f452.asm
+                   _FSR1H   0x000fea       data     extern _output\pic18f452.asm
+                  _PLUSW1   0x000feb       data     extern _output\pic18f452.asm
+                 _PREINC1   0x000fec       data     extern _output\pic18f452.asm
+                _POSTDEC1   0x000fed       data     extern _output\pic18f452.asm
+                _POSTINC1   0x000fee       data     extern _output\pic18f452.asm
+                   _INDF1   0x000fef       data     extern _output\pic18f452.asm
+                 _INTCON3   0x000ff0       data     extern _output\pic18f452.asm
+             _INTCON3bits   0x000ff0       data     extern _output\pic18f452.asm
+                 _INTCON2   0x000ff1       data     extern _output\pic18f452.asm
+             _INTCON2bits   0x000ff1       data     extern _output\pic18f452.asm
+                  _INTCON   0x000ff2       data     extern _output\pic18f452.asm
+              _INTCONbits   0x000ff2       data     extern _output\pic18f452.asm
+                   _PRODL   0x000ff3       data     extern _output\pic18f452.asm
+                   _PRODH   0x000ff4       data     extern _output\pic18f452.asm
+                  _TABLAT   0x000ff5       data     extern _output\pic18f452.asm
+                 _TBLPTRL   0x000ff6       data     extern _output\pic18f452.asm
+                 _TBLPTRH   0x000ff7       data     extern _output\pic18f452.asm
+                 _TBLPTRU   0x000ff8       data     extern _output\pic18f452.asm
+                     _PCL   0x000ff9       data     extern _output\pic18f452.asm
+                  _PCLATH   0x000ffa       data     extern _output\pic18f452.asm
+                  _PCLATU   0x000ffb       data     extern _output\pic18f452.asm
+                  _STKPTR   0x000ffc       data     extern _output\pic18f452.asm
+              _STKPTRbits   0x000ffc       data     extern _output\pic18f452.asm
+                    _TOSL   0x000ffd       data     extern _output\pic18f452.asm
+                    _TOSH   0x000ffe       data     extern _output\pic18f452.asm
+                    _TOSU   0x000fff       data     extern _output\pic18f452.asm
+                   _timer   0x000080       data     extern _output/main.asm
+                 _timer24   0x000082       data     extern _output/main.asm
+                    _play   0x000084       data     extern _output/main.asm
+                _midiplay   0x000085       data     extern _output/main.asm
+                    _last   0x000086       data     extern _output/main.asm
+                    r0x00   0x000010       data     static _output/main.asm
+                 _nbpulse   0x000087       data     extern _output/main.asm
+               _nbpulse24   0x000088       data     extern _output/main.asm
+                   _nbtik   0x000089       data     extern _output/main.asm
+                  _nbstep   0x00008a       data     extern _output/main.asm
+                   _nbpat   0x00008b       data     extern _output/main.asm
+        _AIN_NotifyChange   0x003908    program     extern _output/main.asm
+        _ENC_NotifyChange   0x003916    program     extern _output/main.asm
+        _DIN_NotifyToggle   0x003924    program     extern _output/main.asm
+       _SR_Service_Finish   0x003932    program     extern _output/main.asm
+      _SR_Service_Prepare   0x003940    program     extern _output/main.asm
+_MPROC_NotifyReceivedByte   0x0035cc    program     extern _output/main.asm
+               _00225_DS_   0x0035f4    program     static _output/main.asm
+               _00226_DS_   0x0035fc    program     static _output/main.asm
+               _00227_DS_   0x00361e    program     static _output/main.asm
+               _00231_DS_   0x00362a    program     static _output/main.asm
+     _MPROC_NotifyTimeout   0x00394e    program     extern _output/main.asm
+  _MPROC_NotifyFoundEvent   0x00395c    program     extern _output/main.asm
+_MPROC_NotifyReceivedEvnt   0x00396a    program     extern _output/main.asm
+            _DISPLAY_Tick   0x003978    program     extern _output/main.asm
+            _DISPLAY_Init   0x00374c    program     extern _output/main.asm
+                   _Timer   0x00354e    program     extern _output/main.asm
+               _00173_DS_   0x003572    program     static _output/main.asm
+               _00193_DS_   0x003588    program     static _output/main.asm
+               _10272_DS_   0x003594    program     static _output/main.asm
+               _00177_DS_   0x003598    program     static _output/main.asm
+               _00178_DS_   0x00359a    program     static _output/main.asm
+               _00194_DS_   0x0035a6    program     static _output/main.asm
+               _20273_DS_   0x0035b2    program     static _output/main.asm
+               _00180_DS_   0x0035b4    program     static _output/main.asm
+               _00182_DS_   0x0035c2    program     static _output/main.asm
+                    _Tick   0x003986    program     extern _output/main.asm
+                    _Init   0x003710    program     extern _output/main.asm
+                 _GB_INIT   0x0036d2    program     extern _output/main.asm
+             _SYNC24_PUSH   0x00330e    program     extern _output/main.asm
+               _00139_DS_   0x00332e    program     static _output/main.asm
+               _00114_DS_   0x00333a    program     static _output/main.asm
+               _00110_DS_   0x00334a    program     static _output/main.asm
+               _00111_DS_   0x003358    program     static _output/main.asm
+               _00125_DS_   0x003364    program     static _output/main.asm
+               _00146_DS_   0x00336e    program     static _output/main.asm
+               _00121_DS_   0x003378    program     static _output/main.asm
+               _00116_DS_   0x00338e    program     static _output/main.asm
+               _00118_DS_   0x00339e    program     static _output/main.asm
+               _00120_DS_   0x0033aa    program     static _output/main.asm
+               _00122_DS_   0x003418    program     static _output/main.asm
+               _00127_DS_   0x00342c    program     static _output/main.asm
+              _SEND_PULSE   0x003634    program     extern _output/main.asm
+                  __str_0   0x003662    program     static _output/main.asm
+                  __str_1   0x003664    program     static _output/main.asm
+                  __str_2   0x003668    program     static _output/main.asm
+                  __str_3   0x00366a    program     static _output/main.asm
+                  __str_4   0x003674    program     static _output/main.asm
+                  __str_5   0x003686    program     static _output/main.asm
+                   _cinit   0x003994    program     extern  
+ 
