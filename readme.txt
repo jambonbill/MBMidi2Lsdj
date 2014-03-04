@@ -1,7 +1,7 @@
 
-<application name>
+Midi to Lsdj syncronisation 
 ===============================================================================
-Copyright (C) <year>  <name> (<email>)
+Copyright (C) 2014  Jambonbill (Sidabitball.com)
 Licensed for personal non-commercial use only.
 All other rights reserved.
 ===============================================================================
@@ -21,12 +21,10 @@ The details are described under http://www.ucapps.de/mios_c.html
 
 Required hardware:
    o one MBHP_CORE module
-
-Optional hardware:
-   o 
+   -> http://ucapps.de/mbhp_core.html
 
 ===============================================================================
 
-<description>
+A minimal midi to lsdj sync converter,
 
 ===============================================================================
